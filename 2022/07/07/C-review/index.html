@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhoutimemachine.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="W11-6 C 语言的标识符由字母、数字和其他任意字符组成。（F）应当由字母、数字和下划线组成，其中首字符不能为下划线 实际运行中，包含$的标识符(identifier)也可以编译通过。在这样的标识符中，$字符也可以作为首字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C-review">
+<meta property="og:url" content="https://zhoutimemachine.github.io/2022/07/07/C-review/index.html">
+<meta property="og:site_name" content="Welcome to TimeMachine&#39;s Blog">
+<meta property="og:description" content="W11-6 C 语言的标识符由字母、数字和其他任意字符组成。（F）应当由字母、数字和下划线组成，其中首字符不能为下划线 实际运行中，包含$的标识符(identifier)也可以编译通过。在这样的标识符中，$字符也可以作为首字符">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-07T14:19:20.000Z">
+<meta property="article:modified_time" content="2022-07-07T14:27:37.266Z">
+<meta property="article:author" content="TimeMachine">
+<meta property="article:tag" content="review">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhoutimemachine.github.io/2022/07/07/C-review/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhoutimemachine.github.io/2022/07/07/C-review/","path":"2022/07/07/C-review/","title":"C-review"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C-review | Welcome to TimeMachine's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Welcome to TimeMachine's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">coder, thinker and sleeper</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#W1"><span class="nav-number">1.</span> <span class="nav-text">W1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-C-%E8%AF%AD%E8%A8%80%E7%9A%84%E6%A0%87%E8%AF%86%E7%AC%A6%E7%94%B1%E5%AD%97%E6%AF%8D%E3%80%81%E6%95%B0%E5%AD%97%E5%92%8C%E5%85%B6%E4%BB%96%E4%BB%BB%E6%84%8F%E5%AD%97%E7%AC%A6%E7%BB%84%E6%88%90%E3%80%82%EF%BC%88F%EF%BC%89"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1-6 C 语言的标识符由字母、数字和其他任意字符组成。（F）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#W3"><span class="nav-number">2.</span> <span class="nav-text">W3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-%E5%9C%A8%E5%B5%8C%E5%A5%97%E4%BD%BF%E7%94%A8if%E8%AF%AD%E5%8F%A5%E6%97%B6%EF%BC%8CC%E8%AF%AD%E8%A8%80%E8%A7%84%E5%AE%9Aelse%E6%80%BB%E6%98%AF-%E3%80%82"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">2-6 在嵌套使用if语句时，C语言规定else总是______。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#W4"><span class="nav-number">3.</span> <span class="nav-text">W4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-sizeof-%E6%98%AFC%E8%AF%AD%E8%A8%80%E7%9A%84%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AE%A1%E7%AE%97%E5%8F%82%E9%87%8F%E6%89%80%E5%8D%A0%E5%86%85%E5%AD%98%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0%E3%80%82%E5%A6%82sizeof-int-%E5%8F%AF%E8%AE%A1%E7%AE%97%E6%95%B4%E5%9E%8B%E6%89%80%E5%8D%A0%E7%9A%84%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E6%95%B0%E3%80%82-F"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">1-3 sizeof( )是C语言的一个函数，可以计算参量所占内存的字节数。如sizeof(int)可计算整型所占的内存字节数。(F)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E9%80%9A%E8%BF%87%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%8F%AA%E8%83%BD%E8%8E%B7%E5%BE%97%E4%B8%80%E4%B8%AA%E8%BF%94%E5%9B%9E%E5%80%BC%E3%80%82%EF%BC%88F%EF%BC%89"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">1-4 通过函数调用只能获得一个返回值。（F）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E5%B5%8C%E5%A5%97%E8%B0%83%E7%94%A8%E4%BD%86%E4%B8%8D%E8%83%BD%E5%B5%8C%E5%A5%97%E5%AE%9A%E4%B9%89%E3%80%82%EF%BC%88T%EF%BC%89"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">1-5 函数可以嵌套调用但不能嵌套定义。（T）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%9C%A8C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E4%B8%AD%EF%BC%8C%E8%8B%A5%E5%AF%B9%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E6%9C%AA%E5%8A%A0%E6%98%BE%E5%BC%8F%E8%AF%B4%E6%98%8E%EF%BC%8C%E5%88%99%E5%87%BD%E6%95%B0%E7%9A%84%E9%9A%90%E5%90%AB%E7%B1%BB%E5%9E%8B%E4%B8%BA%EF%BC%88int%EF%BC%89%E3%80%82"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">2-1 在C语言程序中，若对函数类型未加显式说明，则函数的隐含类型为（int）。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E4%B8%AD%E2%85%A0%E6%AE%B5"><span class="nav-number">4.</span> <span class="nav-text">期中Ⅰ段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#W10"><span class="nav-number">5.</span> <span class="nav-text">W10</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%8C%87%E9%92%88%E5%8F%AA%E6%9C%89%E5%8A%A0%E5%87%8F%E6%93%8D%E4%BD%9C%EF%BC%8C%E6%B2%A1%E6%9C%89%E4%B9%98%E9%99%A4%E6%93%8D%E4%BD%9C%E3%80%82%E6%8C%87%E9%92%88%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%B8%B8%E6%95%B0%E3%80%81%E5%87%8F%E5%B8%B8%E6%95%B0%EF%BC%9B%E7%9B%B8%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%8F%AF%E4%BB%A5%E7%9B%B8%E5%8A%A0%E3%80%81%E7%9B%B8%E5%87%8F%E3%80%82-F"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">1-1 指针只有加减操作，没有乘除操作。指针可以加常数、减常数；相同类型的指针可以相加、相减。(F)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E5%81%87%E8%AE%BE%E6%9C%89%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B%EF%BC%9A-int-array-10-%E5%88%99%E8%AF%A5%E8%AF%AD%E5%8F%A5%E5%AE%9A%E4%B9%89%E4%BA%86%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84array%E3%80%82%E5%85%B6%E4%B8%ADarray%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%98%AF%E6%95%B4%E5%9E%8B%E6%8C%87%E9%92%88%EF%BC%88%E5%8D%B3%EF%BC%9A-int-%EF%BC%89-F"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">1-2 假设有定义如下： int array[10]; 则该语句定义了一个数组array。其中array的类型是整型指针（即： int *）(F)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-If-variables-are-defined-and-assigned-correctly-the-expression-is-wrong"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">2-1 If variables are defined and assigned correctly, the expression __ is wrong.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-According-to-the-declaration-int-a-10-p-x3D-a-the-expression-is-wrong"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">2-2 According to the declaration: int a[10], *p&#x3D;a; the expression __ is wrong.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-char-str-10-str-x3D-%E2%80%9Dstring%E2%80%9D%EF%BC%9B-F"><span class="nav-number">5.0.0.5.</span> <span class="nav-text">2-3 char str[10]; str&#x3D;”string”；(F)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-According-to-the-declaration-int-p-10-p-is-a-n"><span class="nav-number">5.0.0.6.</span> <span class="nav-text">2-6 According to the declaration: int (*p)[10];, p is a(n) __.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-Among-the-following-statements-is-equivalent-to-the-declaration-int-p-4"><span class="nav-number">5.0.0.7.</span> <span class="nav-text">2-7 Among the following statements, __ is equivalent to the declaration: int *p[4];.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-For-the-function-declaration-void-f-char-p-%EF%BC%8Cthe-definition-of-var-makes-the-function-call-f-var-incorrect%E3%80%82"><span class="nav-number">5.0.0.8.</span> <span class="nav-text">2-8 For the function declaration void f(char ** p)，the definition __ of var makes the function call f(var) incorrect。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%9A%90%E5%BC%8F%E8%BD%AC%E5%8C%96%EF%BC%8C%E8%BF%99%E6%98%AF%E6%88%91%E5%9C%A8%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9C%8B%E5%88%B0%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AF%B4%E6%B3%95%EF%BC%8C%E5%A4%A7%E6%A6%82%E8%A7%A3%E9%87%8A%E5%A6%82%E4%B8%8B"><span class="nav-number">5.0.0.8.0.1.</span> <span class="nav-text">关于隐式转化，这是我在网络上看到的一种说法，大概解释如下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-%E5%AF%B9%E4%BA%8E%E4%BB%A5%E4%B8%8B%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89%EF%BC%8C%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%B5%8B%E5%80%BC%E6%98%AF%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">5.0.0.9.</span> <span class="nav-text">2-10 对于以下变量定义，正确的赋值是（）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#char-pc-5-s-10"><span class="nav-number">5.0.0.10.</span> <span class="nav-text">char *pc[5], s[10];</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#W11"><span class="nav-number">6.</span> <span class="nav-text">W11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E6%98%AF%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E7%9B%B8%E4%BA%92%E8%B5%8B%E5%80%BC%E7%9A%84%E3%80%82-F"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">1-2 不同类型的指针变量是可以直接相互赋值的。(F)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-For-definitions-char-s-2-3-x3D-%E2%80%9Cab%E2%80%9D-%E2%80%9Ccd%E2%80%9D-p-x3D-char-s-the-expression-is-correct-and-its-value-is-equivalent-to-the-element-s-1-1"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">2-8 For definitions: char s[2][3]&#x3D;{“ab”, “cd”}, *p&#x3D;(char *)s; the expression __ is correct and its value is equivalent to the element s[1][1].</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%B8%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E7%9A%84p%E4%B8%8D%E6%98%AF%E6%8C%87%E9%92%88%EF%BC%8C%E8%AF%B7%E9%80%89%E6%8B%A9%E6%81%B0%E5%BD%93%E7%9A%84%E9%80%89%E9%A1%B9%EF%BC%9A"><span class="nav-number">6.0.0.3.</span> <span class="nav-text">2-9 以下哪个定义中的p不是指针，请选择恰当的选项：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-%E8%8B%A5%E6%9C%89%E5%AE%9A%E4%B9%89char-str-x3D-%E2%80%9CPython%E2%80%9D-%E2%80%9CSQL%E2%80%9D-%E2%80%9CJAVA%E2%80%9D-%E2%80%9CPHP%E2%80%9D-%E2%80%9CC-%E2%80%9D-%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-str-1-gt-str-3-%E6%AF%94%E8%BE%83%E7%9A%84%E6%98%AF%EF%BC%9A"><span class="nav-number">6.0.0.4.</span> <span class="nav-text">2-10 若有定义char *str[]&#x3D;{“Python”, “SQL”, “JAVA”, “PHP”, “C++”}; 则表达式*str[1] &gt; *str[3]比较的是：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#W12"><span class="nav-number">7.</span> <span class="nav-text">W12</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%8F%AF%E4%BB%A5%E4%BD%9C%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0-T"><span class="nav-number">7.0.0.1.</span> <span class="nav-text">1-1 结构体变量可以作数组元素(T)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E7%BB%93%E6%9E%84%E4%BD%93%E6%88%90%E5%91%98%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%BF%85%E9%A1%BB%E6%98%AF%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-F"><span class="nav-number">7.0.0.2.</span> <span class="nav-text">1-2 结构体成员的类型必须是基本数据类型(F)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E6%9C%AC%E8%BA%AB%E4%B8%8D%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4-T"><span class="nav-number">7.0.0.3.</span> <span class="nav-text">1-3 结构体类型本身不占用内存空间，结构体变量占用内存空间(T)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">TimeMachine</p>
+  <div class="site-description" itemprop="description">just enjoy yourself</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zhoutimemachine.github.io/2022/07/07/C-review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="TimeMachine">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to TimeMachine's Blog">
+      <meta itemprop="description" content="just enjoy yourself">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C-review | Welcome to TimeMachine's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C-review
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-07-07 22:19:20 / Modified: 22:27:37" itemprop="dateCreated datePublished" datetime="2022-07-07T22:19:20+08:00">2022-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="W1"><a href="#W1" class="headerlink" title="W1"></a><strong>W1</strong></h1><h4 id="1-6-C-语言的标识符由字母、数字和其他任意字符组成。（F）"><a href="#1-6-C-语言的标识符由字母、数字和其他任意字符组成。（F）" class="headerlink" title="1-6 C 语言的标识符由字母、数字和其他任意字符组成。（F）"></a>1-6 C 语言的标识符由字母、数字和其他任意字符组成。（F）</h4><pre><code>应当由字母、数字和下划线组成，其中首字符不能为下划线
+实际运行中，包含$的标识符(identifier)也可以编译通过。在这样的标识符中，$字符也可以作为首字符
+</code></pre>
+<span id="more"></span>
+
+<h1 id="W3"><a href="#W3" class="headerlink" title="W3"></a><strong>W3</strong></h1><h4 id="2-6-在嵌套使用if语句时，C语言规定else总是-。"><a href="#2-6-在嵌套使用if语句时，C语言规定else总是-。" class="headerlink" title="2-6 在嵌套使用if语句时，C语言规定else总是______。"></a>2-6 在嵌套使用if语句时，C语言规定else总是______。</h4><pre><code>和之前与其最近的且不带else的if配对
+</code></pre>
+<h1 id="W4"><a href="#W4" class="headerlink" title="W4"></a><strong>W4</strong></h1><h4 id="1-3-sizeof-是C语言的一个函数，可以计算参量所占内存的字节数。如sizeof-int-可计算整型所占的内存字节数。-F"><a href="#1-3-sizeof-是C语言的一个函数，可以计算参量所占内存的字节数。如sizeof-int-可计算整型所占的内存字节数。-F" class="headerlink" title="1-3 sizeof( )是C语言的一个函数，可以计算参量所占内存的字节数。如sizeof(int)可计算整型所占的内存字节数。(F)"></a>1-3 sizeof( )是C语言的一个函数，可以计算参量所占内存的字节数。如sizeof(int)可计算整型所占的内存字节数。(F)</h4><pre><code>sizeof()是C语言的一个运算符（这就是一个坑题）
+</code></pre>
+<h4 id="1-4-通过函数调用只能获得一个返回值。（F）"><a href="#1-4-通过函数调用只能获得一个返回值。（F）" class="headerlink" title="1-4 通过函数调用只能获得一个返回值。（F）"></a>1-4 通过函数调用只能获得一个返回值。（F）</h4><pre><code>1个或0个（这也是一个坑题）
+</code></pre>
+<h4 id="1-5-函数可以嵌套调用但不能嵌套定义。（T）"><a href="#1-5-函数可以嵌套调用但不能嵌套定义。（T）" class="headerlink" title="1-5 函数可以嵌套调用但不能嵌套定义。（T）"></a>1-5 函数可以嵌套调用但不能嵌套定义。（T）</h4><h4 id="2-1-在C语言程序中，若对函数类型未加显式说明，则函数的隐含类型为（int）。"><a href="#2-1-在C语言程序中，若对函数类型未加显式说明，则函数的隐含类型为（int）。" class="headerlink" title="2-1 在C语言程序中，若对函数类型未加显式说明，则函数的隐含类型为（int）。"></a>2-1 在C语言程序中，若对函数类型未加显式说明，则函数的隐含类型为（int）。</h4><h1 id="期中Ⅰ段"><a href="#期中Ⅰ段" class="headerlink" title="期中Ⅰ段"></a><strong>期中Ⅰ段</strong></h1><h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><p>优先级|运算符|结合性&#x2F;目数<br>:–:|:–:|:–:|:–:<br>1|[]数组 () |<br>1|-&gt; .结构|<br><strong>2</strong>|<strong>-取负 ++ –自增减</strong>|右&#x2F;单<br><strong>2</strong>|<strong>（类型）</strong>|<strong>右</strong><br><strong>2</strong>|* &amp; 指针&#x2F;地址|右&#x2F;单<br><strong>2</strong>|<strong>！~ 非&#x2F;按位反</strong>|右&#x2F;单<br><strong>2</strong>|<strong>sizeof</strong>|<strong>右</strong><br>3|* &#x2F; %|&#x2F;双<br>4|+ -|&#x2F;双<br>5|&lt;&lt; &gt;&gt;|&#x2F;双<br>6|&gt;(&#x3D;) &lt;(&#x3D;)|&#x2F;双<br><em><em>7</em><em>|<strong>&#x3D;&#x3D; !&#x3D;</strong>|&#x2F;双<br>8&#x2F;9&#x2F;10|&amp; &#x2F; ^ &#x2F; | 位|&#x2F;双<br>11&#x2F;12|&amp;&amp; || 逻辑|&#x2F;双<br><strong>13</strong>|<strong>?:</strong>|<strong>右&#x2F;三</strong><br><strong>14</strong>|<strong>各种赋值</strong>|<strong>右</strong><br>15|,|<br>    需要关注的点：<br>    1、大小比较符(6)高于等于比较符(7)，都处于中游<br>    2、第1级yyds：数组[]、结构.-&gt;、括号()可认为与相关操作数一体<br>    3、关注第2级（除第1级外，第2级几乎最高，且都有右结合的特殊性）<br>    4、赋值没地位，逗号最没地位<br>    5、数字计算中最常用的</em>&#x2F;%(3)与+-(4)符合认知，仅居于1、2之下<br>    6、以</em>&#x2F;%和+-为表格的中心，可见所有的比较符都在其下面<br>    ——判断条件中*&#x2F;%+-对比较符号间不需要括号<br>    7、以*&#x2F;%和+-为表格的中心，可见几乎所有逻辑和位运算都在其下面<br>    ——！、~是“反面”例子，居于第2级<br>    8、逻辑：非&gt;与&gt;或<br>    9、位运算：反&gt;与&gt;异或&gt;或<br>    10、特殊的三目运算符：只比最没地位的两个好一点，有右结合的特殊性<br>    11、右结合：第2级，?:条件和赋值<br>    12、具体例子：第2级右结合的体现<br>    <em>p++<br>    (char</em>)(&amp;n)等价于(char*)&amp;n</p>
+<h1 id="W10"><a href="#W10" class="headerlink" title="W10"></a><strong>W10</strong></h1><h4 id="1-1-指针只有加减操作，没有乘除操作。指针可以加常数、减常数；相同类型的指针可以相加、相减。-F"><a href="#1-1-指针只有加减操作，没有乘除操作。指针可以加常数、减常数；相同类型的指针可以相加、相减。-F" class="headerlink" title="1-1 指针只有加减操作，没有乘除操作。指针可以加常数、减常数；相同类型的指针可以相加、相减。(F)"></a>1-1 指针只有加减操作，没有乘除操作。指针可以加常数、减常数；相同类型的指针可以相加、相减。(F)</h4><pre><code>相同类型的指针不能相加，因为相加之后没有什么意义
+</code></pre>
+<h4 id="1-2-假设有定义如下：-int-array-10-则该语句定义了一个数组array。其中array的类型是整型指针（即：-int-）-F"><a href="#1-2-假设有定义如下：-int-array-10-则该语句定义了一个数组array。其中array的类型是整型指针（即：-int-）-F" class="headerlink" title="1-2 假设有定义如下： int array[10]; 则该语句定义了一个数组array。其中array的类型是整型指针（即： int *）(F)"></a>1-2 假设有定义如下： int array[10]; 则该语句定义了一个数组array。其中array的类型是整型指针（即： int *）(F)</h4><pre><code>array的类型是数组名。array存储的是array[0]的地址，array代表的是整个数组。
+因此&amp;array和array虽然数值相同但意义不同，可以从(&amp;array)+1和array+1中看出
+——前者移动了40个Byte，后者移动了4个Byte
+</code></pre>
+<h4 id="2-1-If-variables-are-defined-and-assigned-correctly-the-expression-is-wrong"><a href="#2-1-If-variables-are-defined-and-assigned-correctly-the-expression-is-wrong" class="headerlink" title="2-1 If variables are defined and assigned correctly, the expression __ is wrong."></a>2-1 If variables are defined and assigned correctly, the expression __ is wrong.</h4><pre><code>&amp;&amp;x
+&amp;x访问到了x的地址，但是这个地址是直接访问到的而不是从某个存储它的变量中读到的，所以不能再取一次地址
+</code></pre>
+<h4 id="2-2-According-to-the-declaration-int-a-10-p-x3D-a-the-expression-is-wrong"><a href="#2-2-According-to-the-declaration-int-a-10-p-x3D-a-the-expression-is-wrong" class="headerlink" title="2-2 According to the declaration: int a[10], *p&#x3D;a; the expression __ is wrong."></a>2-2 According to the declaration: int a[10], *p&#x3D;a; the expression __ is wrong.</h4><pre><code>a++
+数组名可以看成const指针，不能做++运算
+</code></pre>
+<h4 id="2-3-char-str-10-str-x3D-”string”；-F"><a href="#2-3-char-str-10-str-x3D-”string”；-F" class="headerlink" title="2-3 char str[10]; str&#x3D;”string”；(F)"></a>2-3 char str[10]; str&#x3D;”string”；(F)</h4><pre><code>用字符串字面量（&quot;xxx&quot;）初始化：
+字符数组只能在被定义时这么干，定义了之后不行。
+字符串在被定义时和定义了之后都可以这么干。
+</code></pre>
+<h4 id="2-6-According-to-the-declaration-int-p-10-p-is-a-n"><a href="#2-6-According-to-the-declaration-int-p-10-p-is-a-n" class="headerlink" title="2-6 According to the declaration: int (*p)[10];, p is a(n) __."></a>2-6 According to the declaration: int (*p)[10];, p is a(n) __.</h4><pre><code>pointer
+p是一个数组指针/行指针，指向若干个长度为10的数组/若干一行有10个元素的行，
+类型与传参时的二维数组相同(二维数组作为函数的参数时就可以这么写)。
+但注意二维数组名的类型并不是指针，而是数组。二维数组是&quot;数组的数组&quot;，其数组名自然也是数组，
+但是传参/赋值的时候由于隐式转化的问题，类型会与此相同。
+</code></pre>
+<h4 id="2-7-Among-the-following-statements-is-equivalent-to-the-declaration-int-p-4"><a href="#2-7-Among-the-following-statements-is-equivalent-to-the-declaration-int-p-4" class="headerlink" title="2-7 Among the following statements, __ is equivalent to the declaration: int *p[4];."></a>2-7 Among the following statements, __ is equivalent to the declaration: int *p[4];.</h4><pre><code>int *p([4])
+再次体现了优先级问题，[]是第1级的，*是第2级的。
+int *p[4]中，p是一个数组，存储着4个指针元素。因此int *p[4]中的p和int (*p)[4]中的p存在类型上的差异
+——前者是数组，后者是指针。
+虽然int *p[4]的p是一个数组，但考虑到数组名隐式转化为指针的问题，在传参/赋值的时候会认为p的类型是int**。
+而int (*p)[4]的类型就是(int*)[4]，和int**不同。这在下一题会有明显的体现。
+</code></pre>
+<h4 id="2-8-For-the-function-declaration-void-f-char-p-，the-definition-of-var-makes-the-function-call-f-var-incorrect。"><a href="#2-8-For-the-function-declaration-void-f-char-p-，the-definition-of-var-makes-the-function-call-f-var-incorrect。" class="headerlink" title="2-8 For the function declaration void f(char ** p)，the definition __ of var makes the function call f(var) incorrect。"></a>2-8 For the function declaration void f(char ** p)，the definition __ of var makes the function call f(var) incorrect。</h4><pre><code>A.char var[10][10];(×)
+B.char *var[10];(√)
+C.void *var = NULL;(√)
+D.char *v=NULL, **var=&amp;v;(√)
+A中var的类型是二维数组，传参时的类型为(*char)[10]，虽然是个(数组/行)指针，但并不是二重指针。
+这是因为传参时的隐式转化只能转化一层，因此一维数组传参时完全等价于const指针，但是二维数组就无法等价于二重指针。
+另外*var确实代表var[0]这个数组，**var也确实就是var[0][0]，但是注意这里的*是运算符而不是类型定义。
+作为类型定义时，数组和指针是需要区分的。
+B中var的类型是指针数组，但是由于数组隐式转化的问题，其传参时表现出来的类型就是char**，因此是正确的。
+C中var的类型是无类型指针，它可以指向任何东西。如果它指向的是一个char*，那么它就符合char**的类型要求了，因此正确。
+D中var的类型是正统的char**。
+</code></pre>
+<h6 id="关于隐式转化，这是我在网络上看到的一种说法，大概解释如下"><a href="#关于隐式转化，这是我在网络上看到的一种说法，大概解释如下" class="headerlink" title="关于隐式转化，这是我在网络上看到的一种说法，大概解释如下"></a>关于<strong>隐式转化</strong>，这是我在网络上看到的一种说法，大概解释如下</h6><pre><code>数组名代表整个数组，但是存储着其第一个元素的地址。因此数组名既是数组，又可以看成一个指针(类型依然是数组)
+在传参/赋值时，其代表数组的意义并没有什么意义，应当看成一个指针，因此会有“数组隐式转化为指针”的现象
+这种转化只能转化一层，原因是转化一层之后它已经是个指针可以进行传参/赋值了，编译器不需要再考虑它指的是什么东西
+因此二维数组传参/赋值时只会隐式转化为(char*)[10]（以上题为例），而不会转化为char**
+</code></pre>
+<h4 id="2-10-对于以下变量定义，正确的赋值是（）。"><a href="#2-10-对于以下变量定义，正确的赋值是（）。" class="headerlink" title="2-10 对于以下变量定义，正确的赋值是（）。"></a>2-10 对于以下变量定义，正确的赋值是（）。</h4><h4 id="char-pc-5-s-10"><a href="#char-pc-5-s-10" class="headerlink" title="char *pc[5], s[10];"></a>char *pc[5], s[10];</h4><pre><code>A.pc = s;(×)
+B.*pc = s[0];(×)
+C.*pc = s;(√)
+D.*pc = &amp;s;(×)
+有了以上的铺垫，感觉这里就很自然了。
+A，pc的类型是数组，此处作为赋值的左值相当于const指针，不能被赋值。
+BCD，*pc就是pc[0]，一个字符串(char*)
+B，s[0]是字符(char)，不能赋值给字符串(char*)
+D,&amp;s是整个字符数组s的地址，如果存储起来类型就是(char*)[10]，当然也不能赋值给字符串(char*)
+C，s是字符数组，赋值时隐式转化为char*，可以被赋给*pc
+</code></pre>
+<h1 id="W11"><a href="#W11" class="headerlink" title="W11"></a><strong>W11</strong></h1><h4 id="1-2-不同类型的指针变量是可以直接相互赋值的。-F"><a href="#1-2-不同类型的指针变量是可以直接相互赋值的。-F" class="headerlink" title="1-2 不同类型的指针变量是可以直接相互赋值的。(F)"></a>1-2 不同类型的指针变量是可以直接相互赋值的。(F)</h4><pre><code>会报错。需要强制类型转换
+</code></pre>
+<h4 id="2-8-For-definitions-char-s-2-3-x3D-“ab”-“cd”-p-x3D-char-s-the-expression-is-correct-and-its-value-is-equivalent-to-the-element-s-1-1"><a href="#2-8-For-definitions-char-s-2-3-x3D-“ab”-“cd”-p-x3D-char-s-the-expression-is-correct-and-its-value-is-equivalent-to-the-element-s-1-1" class="headerlink" title="2-8 For definitions: char s[2][3]&#x3D;{“ab”, “cd”}, *p&#x3D;(char *)s; the expression __ is correct and its value is equivalent to the element s[1][1]."></a>2-8 For definitions: char s[2][3]&#x3D;{“ab”, “cd”}, *p&#x3D;(char *)s; the expression __ is correct and its value is equivalent to the element s[1][1].</h4><pre><code>A.*(s+3);(×)
+B.*s+2;(×)
+C.p[1][1];(×)
+D.*++p+2;(√)
+A没有意义。*s是&quot;ab&quot;，*(s+1)是&quot;cd&quot;(移动步长为sizeof(s[0]))
+B的输出为NULL，*s+1是&quot;b&quot;，*s+3是&quot;cd&quot;(移动步长为sizeof(s[0][0]))
+CD中，s存储的是s[0]的地址，其地址与s[0][0]相同。对p赋值时强制转化为(char*)
+则p被s[0]隐式转化的指针(const指针)赋值,成为存储s[0][0]地址的指针。因此C失去意义。
+则D的++p使得p指向s[0][1]，*取到了s[0][1]，然后注意+2不是指针的移动而是单纯对取到的s[0][1]+2
+因此*++p+2=‘b’+2=‘d’，而不是*++p+2=s[1][1]=‘d’,值的相等只是一个巧合
+所以有*++p+3=‘e’,*++p+4=‘f’……
+</code></pre>
+<h4 id="2-9-以下哪个定义中的p不是指针，请选择恰当的选项："><a href="#2-9-以下哪个定义中的p不是指针，请选择恰当的选项：" class="headerlink" title="2-9 以下哪个定义中的p不是指针，请选择恰当的选项："></a>2-9 以下哪个定义中的p不是指针，请选择恰当的选项：</h4><pre><code>A.char **p;
+B.char (*p)[10];
+C.char *p[6];
+D.给出的三项中，p都是指针(×)
+A、B都是指针，C是指针数组
+</code></pre>
+<h4 id="2-10-若有定义char-str-x3D-“Python”-“SQL”-“JAVA”-“PHP”-“C-”-则表达式-str-1-gt-str-3-比较的是："><a href="#2-10-若有定义char-str-x3D-“Python”-“SQL”-“JAVA”-“PHP”-“C-”-则表达式-str-1-gt-str-3-比较的是：" class="headerlink" title="2-10 若有定义char *str[]&#x3D;{“Python”, “SQL”, “JAVA”, “PHP”, “C++”}; 则表达式*str[1] &gt; *str[3]比较的是："></a>2-10 若有定义char *str[]&#x3D;{“Python”, “SQL”, “JAVA”, “PHP”, “C++”}; 则表达式*str[1] &gt; *str[3]比较的是：</h4><pre><code>A.字符P和字符J
+B.字符串SQL和字符串PHP
+C.字符串Python和字符串JAVA
+D.字符S和字符P
+考察的依然是[]对*的优先级问题
+</code></pre>
+<h1 id="W12"><a href="#W12" class="headerlink" title="W12"></a><strong>W12</strong></h1><h4 id="1-1-结构体变量可以作数组元素-T"><a href="#1-1-结构体变量可以作数组元素-T" class="headerlink" title="1-1 结构体变量可以作数组元素(T)"></a>1-1 结构体变量可以作数组元素(T)</h4><pre><code>结构体数组！
+</code></pre>
+<h4 id="1-2-结构体成员的类型必须是基本数据类型-F"><a href="#1-2-结构体成员的类型必须是基本数据类型-F" class="headerlink" title="1-2 结构体成员的类型必须是基本数据类型(F)"></a>1-2 结构体成员的类型必须是基本数据类型(F)</h4><pre><code>链表？自定义类型也可以
+</code></pre>
+<h4 id="1-3-结构体类型本身不占用内存空间，结构体变量占用内存空间-T"><a href="#1-3-结构体类型本身不占用内存空间，结构体变量占用内存空间-T" class="headerlink" title="1-3 结构体类型本身不占用内存空间，结构体变量占用内存空间(T)"></a>1-3 结构体类型本身不占用内存空间，结构体变量占用内存空间(T)</h4>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/review/" rel="tag"># review</a>
+              <a href="/tags/C/" rel="tag"># C</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/07/oop-final-review/" rel="prev" title="oop-mid-review">
+                  <i class="fa fa-chevron-left"></i> oop-mid-review
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TimeMachine</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

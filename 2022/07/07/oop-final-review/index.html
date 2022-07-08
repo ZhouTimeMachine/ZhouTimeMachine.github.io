@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhoutimemachine.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hw91. 对象间赋值将调用拷贝构造函数。F。对象间赋值，如果是同类对象，有相关类型的赋值运算符重载的话优先调用重载的赋值运算符，否则会调用自动生成的memberwise assignment，即自动的赋值运算。 如果是不同类型的对象赋值，那么如果没有写相关类型的赋值运算符的重载的话，如果存在相关类型的构造函数，那么是会调用那个构造函数的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oop-mid-review">
+<meta property="og:url" content="https://zhoutimemachine.github.io/2022/07/07/oop-final-review/index.html">
+<meta property="og:site_name" content="Welcome to TimeMachine&#39;s Blog">
+<meta property="og:description" content="Hw91. 对象间赋值将调用拷贝构造函数。F。对象间赋值，如果是同类对象，有相关类型的赋值运算符重载的话优先调用重载的赋值运算符，否则会调用自动生成的memberwise assignment，即自动的赋值运算。 如果是不同类型的对象赋值，那么如果没有写相关类型的赋值运算符的重载的话，如果存在相关类型的构造函数，那么是会调用那个构造函数的。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-07T13:20:46.000Z">
+<meta property="article:modified_time" content="2022-07-07T14:27:55.640Z">
+<meta property="article:author" content="TimeMachine">
+<meta property="article:tag" content="review">
+<meta property="article:tag" content="oop">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhoutimemachine.github.io/2022/07/07/oop-final-review/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhoutimemachine.github.io/2022/07/07/oop-final-review/","path":"2022/07/07/oop-final-review/","title":"oop-mid-review"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>oop-mid-review | Welcome to TimeMachine's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Welcome to TimeMachine's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">coder, thinker and sleeper</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hw9"><span class="nav-number">1.</span> <span class="nav-text">Hw9</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AF%B9%E8%B1%A1%E9%97%B4%E8%B5%8B%E5%80%BC%E5%B0%86%E8%B0%83%E7%94%A8%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E3%80%82"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. 对象间赋值将调用拷贝构造函数。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%AE%BE%E7%B1%BBAA%E5%B7%B2%E5%AE%9A%E4%B9%89%EF%BC%8C%E5%81%87%E8%AE%BE%E4%BB%A5%E4%B8%8B%E8%AF%AD%E5%8F%A5%E5%85%A8%E9%83%A8%E5%90%88%E6%B3%95%EF%BC%8C%E5%93%AA%E4%BA%9B%E8%AF%AD%E5%8F%A5%E4%BC%9A%E8%A7%A6%E5%8F%91%E8%B0%83%E7%94%A8%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. 设类AA已定义，假设以下语句全部合法，哪些语句会触发调用拷贝构造函数（）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%81%87%E8%AE%BEMyClass%E6%98%AF%E4%B8%80%E4%B8%AA%E7%B1%BB%EF%BC%8C%E5%88%99%E8%AF%A5%E7%B1%BB%E7%9A%84%E6%8B%B7%E8%B4%9D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E%E8%AF%AD%E5%8F%A5%E4%B8%BA%EF%BC%88%EF%BC%89"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. 假设MyClass是一个类，则该类的拷贝初始化构造函数的声明语句为（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E5%BC%82%E5%B8%B8%E7%B1%BB%E7%9A%84%E8%AF%B4%E6%B3%95%E4%B8%AD%EF%BC%8C%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF%E3%80%82%EF%BC%88%EF%BC%89"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4. 下列关于异常类的说法中，错误的是。（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%B8%8B%E5%88%97%E5%93%AA%E4%B8%80%E4%B8%AA%E8%AF%B4%E6%B3%95%E6%98%AF%E9%94%99%E8%AF%AF%E7%9A%84-%EF%BC%88%EF%BC%89"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5. 下列哪一个说法是错误的?（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%81%87%E8%AE%BEA%E6%98%AF%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%90%8D%E5%AD%97-%E4%B8%8B%E9%9D%A2%E5%93%AA%E6%AE%B5%E7%A8%8B%E5%BA%8F%E4%B8%8D%E4%BC%9A%E7%94%A8%E5%88%B0A%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%9F%EF%BC%88%EF%BC%89"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">6. 假设A是一个类的名字,下面哪段程序不会用到A的拷贝构造函数？（）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hw10"><span class="nav-number">2.</span> <span class="nav-text">Hw10</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%A4%9A%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%AF%E4%BB%A5%E9%87%8D%E8%BD%BD%EF%BC%8C%E4%B8%AA%E5%88%AB%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8D%E8%83%BD%E9%87%8D%E8%BD%BD%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E6%98%AF%E9%80%9A%E8%BF%87%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%AE%9E%E7%8E%B0%E7%9A%84%E3%80%82"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1. 多数运算符可以重载，个别运算符不能重载，运算符重载是通过函数定义实现的。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AF%B9%E6%AF%8F%E4%B8%AA%E5%8F%AF%E9%87%8D%E8%BD%BD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E6%9D%A5%E8%AE%B2%EF%BC%8C%E5%AE%83%E6%97%A2%E5%8F%AF%E4%BB%A5%E9%87%8D%E8%BD%BD%E4%B8%BA%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%88%E5%8F%AF%E4%BB%A5%E9%87%8D%E8%BD%BD%E4%B8%BA%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%8C%E8%BF%98%E5%8F%AF%E4%BB%A5%E9%87%8D%E8%BD%BD%E4%B8%BA%E9%9D%9E%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E3%80%82"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2. 对每个可重载的运算符来讲，它既可以重载为友元函数，又可以重载为成员函数，还可以重载为非成员函数。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AF%B9%E5%8D%95%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E4%B8%BA%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E6%97%B6%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%AA%E5%BD%A2%E5%8F%82%E3%80%82%E8%80%8C%E9%87%8D%E8%BD%BD%E4%B8%BA%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E6%97%B6%EF%BC%8C%E4%B8%8D%E8%83%BD%E6%98%BE%E5%BC%8F%E8%AF%B4%E6%98%8E%E5%BD%A2%E5%8F%82%E3%80%82"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3. 对单目运算符重载为友元函数时，可以说明一个形参。而重载为成员函数时，不能显式说明形参。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%AF%E4%BB%A5%E4%BF%9D%E6%8C%81%E5%8E%9F%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%E5%92%8C%E7%BB%93%E5%90%88%E6%80%A7%E4%B8%8D%E5%8F%98%E3%80%82"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">4. 重载运算符可以保持原运算符的优先级和结合性不变。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E9%87%8D%E8%BD%BDoperator-%E6%97%B6%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%BA%94%E5%BD%93%E4%B8%8E%E5%BD%A2%E5%8F%82%E7%B1%BB%E5%9E%8B%E4%B8%80%E8%87%B4%E3%80%82%E6%AF%94%E5%A6%82%E4%BB%A5%E4%B8%8B%E7%A8%8B%E5%BA%8F%E4%B8%AD%EF%BC%8Coperator-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%E6%9C%89%E9%94%99%EF%BC%9A"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">5. 重载operator+时，返回值的类型应当与形参类型一致。比如以下程序中，operator+的返回值类型有错：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%AD%EF%BC%8C%EF%BC%88%EF%BC%89%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%E3%80%82"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">6. 下列关于运算符重载的描述中，（）是正确的。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E8%A1%A8%E8%BF%B0%E4%B8%AD%EF%BC%8C%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">2.0.0.7.</span> <span class="nav-text">7. 下列关于运算符重载的表述中，正确的是（）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E8%83%BD%E7%94%A8%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E6%98%AF%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">2.0.0.8.</span> <span class="nav-text">8. 能用友元函数重载的运算符是（）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E4%B8%8B%E5%88%97%E5%93%AA%E4%B8%80%E9%A1%B9%E8%AF%B4%E6%B3%95%E6%98%AF%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84"><span class="nav-number">2.0.0.9.</span> <span class="nav-text">9. 下列哪一项说法是不正确的?()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%A6%82%E4%BD%95%E5%8C%BA%E5%88%86%E8%87%AA%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E5%89%8D%E7%BD%AE%E5%BD%A2%E5%BC%8F%E5%92%8C%E5%90%8E%E7%BD%AE%E5%BD%A2%E5%BC%8F%EF%BC%9F%EF%BC%88%EF%BC%89"><span class="nav-number">2.0.0.10.</span> <span class="nav-text">10. 如何区分自增运算符重载的前置形式和后置形式？（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-%E4%B8%8B%E5%88%97%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%AD%EF%BC%8C%E4%B8%8D%E5%8F%AF%E4%BB%A5%E9%87%8D%E8%BD%BD%E7%9A%84%E6%98%AF%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">2.0.0.11.</span> <span class="nav-text">11. 下列运算符中，不可以重载的是（）。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hw11"><span class="nav-number">3.</span> <span class="nav-text">Hw11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%8B%A5%E9%87%8D%E8%BD%BD%E4%B8%BA%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%EF%BC%8C%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E6%A0%BC%E5%BC%8F%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">1. 若重载为友元函数，函数定义格式如下：()</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hw12"><span class="nav-number">4.</span> <span class="nav-text">Hw12</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Given"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">1. Given:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-result-is"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">The result is :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%8B%E5%88%97%E7%9A%84%E6%A8%A1%E6%9D%BF%E8%AF%B4%E6%98%8E%E4%B8%AD%EF%BC%8C%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF-%E3%80%82"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">2. 下列的模板说明中，正确的是()。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E7%B1%BB%E6%A8%A1%E6%9D%BF%EF%BC%8C%E6%8F%8F%E8%BF%B0%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF-%E3%80%82"><span class="nav-number">4.0.0.4.</span> <span class="nav-text">3. 关于类模板，描述错误的是()。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%8B%E5%88%97%E6%9C%89%E5%85%B3%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8F%8F%E8%BF%B0%EF%BC%8C%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF-%E3%80%82"><span class="nav-number">4.0.0.5.</span> <span class="nav-text">4. 下列有关模板的描述，错误的是____。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0%E7%9A%84%E7%9C%9F%E6%AD%A3%E4%BB%A3%E7%A0%81%E6%98%AF%E5%9C%A8%E5%93%AA%E4%B8%AA%E6%97%B6%E6%9C%9F%E4%BA%A7%E7%94%9F%E7%9A%84-%E3%80%82"><span class="nav-number">4.0.0.6.</span> <span class="nav-text">5. 模板函数的真正代码是在哪个时期产生的____。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AE%9E%E9%99%85%E4%B8%8A%E6%98%AF%E5%B0%86%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%88%90%E4%B8%80%E4%B8%AA-%E3%80%82"><span class="nav-number">4.0.0.7.</span> <span class="nav-text">6. 类模板的使用实际上是将类模板实例化成一个____。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E4%B8%8B%E5%88%97%E9%80%89%E9%A1%B9%E4%B8%AD%EF%BC%8C%E5%93%AA%E4%B8%80%E9%A1%B9%E6%98%AF%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E6%97%B6%E6%9C%9F-%E3%80%82"><span class="nav-number">4.0.0.8.</span> <span class="nav-text">7. 下列选项中，哪一项是类模板实例化的时期___。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8Epair-lt-gt-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%AD%EF%BC%8C%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF%E3%80%82"><span class="nav-number">4.0.0.9.</span> <span class="nav-text">8. 下列关于pair&lt;&gt;类模板的描述中，错误的是。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hw13"><span class="nav-number">5.</span> <span class="nav-text">Hw13</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-If-you-are-not-interested-in-the-contents-of-an-exception-object-the-catch-block-parameter-may-be-omitted"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">1. If you are not interested in the contents of an exception object, the catch block parameter may be omitted.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%9A%84catch-%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%BF%85%E9%A1%BB%E7%B4%A7%E8%B7%9Ftry-%E8%AF%AD%E5%8F%A5%E5%9D%97%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BF%99%E4%B8%A4%E4%B8%AA%E8%AF%AD%E5%8F%A5%E4%B9%8B%E9%97%B4%E4%B8%8D%E8%83%BD%E6%8F%92%E5%85%A5%E5%8F%A6%E5%A4%96%E8%AF%AD%E5%8F%A5%E3%80%82"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">2. 异常处理的catch{ }语句块必须紧跟try{ }语句块之后，这两个语句之间不能插入另外语句。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-What-is-wrong-in-the-following-code"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">3. What is wrong in the following code?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-The-function-what-is-defined-in"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">4. The function what() is defined in __.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Which-of-the-following-statements-are-true"><span class="nav-number">5.0.0.5.</span> <span class="nav-text">5. Which of the following statements are true?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Suppose-Exception2-is-derived-from-Exception1-Analyze-the-following-code"><span class="nav-number">5.0.0.6.</span> <span class="nav-text">6. Suppose Exception2 is derived from Exception1. Analyze the following code.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Suppose-that-statement2-throws-an-exception-of-type-Exception2-in-the-following-statement"><span class="nav-number">5.0.0.7.</span> <span class="nav-text">7. Suppose that statement2 throws an exception of type Exception2 in the following statement:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Suppose-that-statement2-throws-an-exception-of-type-Exception2-in-the-following-statement"><span class="nav-number">5.0.0.8.</span> <span class="nav-text">8. Suppose that statement2 throws an exception of type Exception2 in the following statement:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%AD%EF%BC%8C%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">5.0.0.9.</span> <span class="nav-text">9. 下列关于异常的描述中，错误的是（）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E9%87%8D%E6%8A%9B%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%AD%EF%BC%8C%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF%E3%80%82"><span class="nav-number">5.0.0.10.</span> <span class="nav-text">10. 下列关于重抛异常的描述中，错误的是。()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E6%96%AD%E8%A8%80%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%AD%EF%BC%8C%E9%94%99%E8%AF%AF%E7%9A%84%E6%98%AF%E3%80%82"><span class="nav-number">5.0.0.11.</span> <span class="nav-text">11. 下列关于断言的描述中，错误的是。()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-C-%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%E7%9A%84%E6%9C%BA%E5%88%B6%E6%98%AF%E7%94%B1%EF%BC%88%EF%BC%893%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90%E3%80%82"><span class="nav-number">5.0.0.12.</span> <span class="nav-text">12. C++处理异常的机制是由（）3部分组成。()</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">TimeMachine</p>
+  <div class="site-description" itemprop="description">just enjoy yourself</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zhoutimemachine.github.io/2022/07/07/oop-final-review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="TimeMachine">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to TimeMachine's Blog">
+      <meta itemprop="description" content="just enjoy yourself">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="oop-mid-review | Welcome to TimeMachine's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          oop-mid-review
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-07-07 21:20:46 / Modified: 22:27:55" itemprop="dateCreated datePublished" datetime="2022-07-07T21:20:46+08:00">2022-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Hw9"><a href="#Hw9" class="headerlink" title="Hw9"></a>Hw9</h1><h4 id="1-对象间赋值将调用拷贝构造函数。"><a href="#1-对象间赋值将调用拷贝构造函数。" class="headerlink" title="1. 对象间赋值将调用拷贝构造函数。"></a>1. 对象间赋值将调用拷贝构造函数。</h4><pre><code>F。对象间赋值，如果是同类对象，有相关类型的赋值运算符重载的话优先调用重载的赋值运算符，否则会调用自动生成的memberwise assignment，即自动的赋值运算。
+如果是不同类型的对象赋值，那么如果没有写相关类型的赋值运算符的重载的话，如果存在相关类型的构造函数，那么是会调用那个构造函数的。
+</code></pre>
+<span id="more"></span>
+
+<h4 id="2-设类AA已定义，假设以下语句全部合法，哪些语句会触发调用拷贝构造函数（）。"><a href="#2-设类AA已定义，假设以下语句全部合法，哪些语句会触发调用拷贝构造函数（）。" class="headerlink" title="2. 设类AA已定义，假设以下语句全部合法，哪些语句会触发调用拷贝构造函数（）。"></a>2. 设类AA已定义，假设以下语句全部合法，哪些语句会触发调用拷贝构造函数（）。</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AA a, b; <span class="comment">//1</span></span><br><span class="line"><span class="function">AA <span class="title">c</span><span class="params">(<span class="number">10</span>, <span class="number">20</span>)</span></span>; <span class="comment">//2</span></span><br><span class="line"><span class="function">AA <span class="title">d</span><span class="params">(c)</span></span>; <span class="comment">//3</span></span><br><span class="line">AA e = d; <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+
+<p>A.2</p>
+<p>B.3</p>
+<p>C.4</p>
+<p>D.3 和 4</p>
+<pre><code>D。1是默认构造，2是含参构造，3是标准的复制构造，4虽然看似有=，其实也是复制构造。
+</code></pre>
+<h4 id="3-假设MyClass是一个类，则该类的拷贝初始化构造函数的声明语句为（）"><a href="#3-假设MyClass是一个类，则该类的拷贝初始化构造函数的声明语句为（）" class="headerlink" title="3. 假设MyClass是一个类，则该类的拷贝初始化构造函数的声明语句为（）"></a>3. 假设MyClass是一个类，则该类的拷贝初始化构造函数的声明语句为（）</h4><p>A. MyClass&amp;(MyClass x);</p>
+<p>B. MyClass(MyClass x);</p>
+<p>C. MyClass(MyClass &amp;x);</p>
+<p>D. MyClass(MyClass *x);</p>
+<pre><code>C。声明拷贝构造函数：A(const A &amp; a)或者A(A &amp; a)。虽然感觉加个const更好，但是没有const也行。
+</code></pre>
+<h4 id="4-下列关于异常类的说法中，错误的是。（）"><a href="#4-下列关于异常类的说法中，错误的是。（）" class="headerlink" title="4. 下列关于异常类的说法中，错误的是。（）"></a>4. 下列关于异常类的说法中，错误的是。（）</h4><p>A. 异常类由标准库提供，不可以自定义</p>
+<p>B. C++的异常处理机制具有为抛出异常前构造的所有局部对象自动调用析构函数的能力</p>
+<p>C. 若catch块采用异常类对象接收异常信息，则在抛出异常时将通过拷贝构造函数进行对象复制，异常处理完后才将两个异常对象进行析构，释放资源</p>
+<p>D. 异常类对象抛出后，catch块会用类对象引用接收它以便执行相应的处理动作</p>
+<pre><code>A。可以自定义异常类。异常抛出，抛出位置构造的所有局部对象应该被释放。catch块可以用对象或者引用接受异常信息。其中使用对象介绍异常对象是比较好的，因为可以将异常对象拷贝到catch块中，空间是确定的；而引用的话，可能异常对象就在某个被释放的栈空间中，不是很安全。
+</code></pre>
+<h4 id="5-下列哪一个说法是错误的-（）"><a href="#5-下列哪一个说法是错误的-（）" class="headerlink" title="5. 下列哪一个说法是错误的?（）"></a>5. 下列哪一个说法是错误的?（）</h4><p>A. 当用一个对象去初始化同类的另一个对象时,要调用拷贝构造函数</p>
+<p>B. 如果某函数有一个参数是类A的对象,那么该函数被调用时,类A的拷贝构造函数将被调用</p>
+<p>C. 如果函数的返回值是类A的对象时，则函数返回时，类A的拷贝构造函数将被调用</p>
+<p>D. 拷贝构造函数必须自己编写</p>
+<pre><code>D。这道题本身没什么难度，但是作为复习比较适合。A、B、C覆盖了课上讲到的拷贝构造函数被调用的三种情况，尽管编译器可能会进行优化。
+</code></pre>
+<h4 id="6-假设A是一个类的名字-下面哪段程序不会用到A的拷贝构造函数？（）"><a href="#6-假设A是一个类的名字-下面哪段程序不会用到A的拷贝构造函数？（）" class="headerlink" title="6. 假设A是一个类的名字,下面哪段程序不会用到A的拷贝构造函数？（）"></a>6. 假设A是一个类的名字,下面哪段程序不会用到A的拷贝构造函数？（）</h4><p>A. A a1,a2; a1&#x3D;a2;</p>
+<p>B. void func( A a) { cout&lt;&lt;”good”&lt;&lt; endl; }</p>
+<p>C. A func() { A tmp; return tmp;}</p>
+<p>D. A a1; A a2(a1);</p>
+<pre><code>A。A是赋值。B的参数需要拷贝构造，C是返回值需要拷贝构造，D是最基本的拷贝构造（以上都不考虑编译器优化）。如果A写成 A a1=a2，那么也是会用到拷贝构造函数的。
+</code></pre>
+<h1 id="Hw10"><a href="#Hw10" class="headerlink" title="Hw10"></a>Hw10</h1><h4 id="1-多数运算符可以重载，个别运算符不能重载，运算符重载是通过函数定义实现的。"><a href="#1-多数运算符可以重载，个别运算符不能重载，运算符重载是通过函数定义实现的。" class="headerlink" title="1. 多数运算符可以重载，个别运算符不能重载，运算符重载是通过函数定义实现的。"></a>1. 多数运算符可以重载，个别运算符不能重载，运算符重载是通过函数定义实现的。</h4><pre><code>T。
+</code></pre>
+<p>回顾可以重载&#x2F;不能重载的运算符：</p>
+<p><strong>可以重载</strong>的运算符，有算术、赋值、比较、位运算、逻辑与或非、++&#x2F;–等，比较特殊的有：</p>
+<pre><code>&lt;&lt;和&gt;&gt;，或左移/右移，也可能是流插入/流提取。
+
+逗号,也能重载。指针中，-&gt;和-&gt;*都能重载，虽然我并不太清楚-&gt;*的重载的意义是什么……
+
+()可以重载，在minisql中比较器就是重载了()。[]也可以重载，像自定义数组类Array中就用到了[]的重载。
+
+new, new[], delete, delete[]也能重载。
+</code></pre>
+<p><strong>不能重载</strong>的运算符有：</p>
+<pre><code>成员相关的.和.*
+
+宣誓主权的::
+
+三目运算符?:
+
+sizeof和typeid（这两个竟然也算运算符）
+
+类型转换相关：static_cast, dynamic_cast, const_cast和reinterpret_cast
+</code></pre>
+<p>只有<strong>已有</strong>的运算符能被重载。像**就不能被重载，因为它被认为是”create”。</p>
+<h4 id="2-对每个可重载的运算符来讲，它既可以重载为友元函数，又可以重载为成员函数，还可以重载为非成员函数。"><a href="#2-对每个可重载的运算符来讲，它既可以重载为友元函数，又可以重载为成员函数，还可以重载为非成员函数。" class="headerlink" title="2. 对每个可重载的运算符来讲，它既可以重载为友元函数，又可以重载为成员函数，还可以重载为非成员函数。"></a>2. 对每个可重载的运算符来讲，它既可以重载为友元函数，又可以重载为成员函数，还可以重载为非成员函数。</h4><pre><code>F。运算符重载只能重载为友元函数或者成员函数。非友元函数的非成员函数是不能被重载的。
+</code></pre>
+<h4 id="3-对单目运算符重载为友元函数时，可以说明一个形参。而重载为成员函数时，不能显式说明形参。"><a href="#3-对单目运算符重载为友元函数时，可以说明一个形参。而重载为成员函数时，不能显式说明形参。" class="headerlink" title="3. 对单目运算符重载为友元函数时，可以说明一个形参。而重载为成员函数时，不能显式说明形参。"></a>3. 对单目运算符重载为友元函数时，可以说明一个形参。而重载为成员函数时，不能显式说明形参。</h4><pre><code>T。这里说明了重载为友元函数和成员函数的区别。双目运算符的重载，友元函数需要说明两个形参，成员函数只需要说明一个形参。三目运算符不能重载。
+
+然而，一般地，单目运算符应该重载为成员函数，双运算符应该重载为友元函数。
+</code></pre>
+<p>特殊地， ()、[]、-&gt;、-&gt;* ，以及&#x3D;等赋值运算符都<strong>必须</strong>被重载为成员函数。</p>
+<h4 id="4-重载运算符可以保持原运算符的优先级和结合性不变。"><a href="#4-重载运算符可以保持原运算符的优先级和结合性不变。" class="headerlink" title="4. 重载运算符可以保持原运算符的优先级和结合性不变。"></a>4. 重载运算符可以保持原运算符的优先级和结合性不变。</h4><pre><code>T。
+</code></pre>
+<h4 id="5-重载operator-时，返回值的类型应当与形参类型一致。比如以下程序中，operator-的返回值类型有错："><a href="#5-重载operator-时，返回值的类型应当与形参类型一致。比如以下程序中，operator-的返回值类型有错：" class="headerlink" title="5. 重载operator+时，返回值的类型应当与形参类型一致。比如以下程序中，operator+的返回值类型有错："></a>5. 重载operator+时，返回值的类型应当与形参类型一致。比如以下程序中，operator+的返回值类型有错：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line"> <span class="built_in">A</span>(<span class="type">int</span> t=<span class="number">0</span>):<span class="built_in">x</span>(t)&#123;     &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="keyword">operator</span>+(<span class="type">const</span> A&amp; a1)&#123; <span class="keyword">return</span> x+a1.x;  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<pre><code>F。重载operator+，返回值类型不一定要和形参类型一致。
+</code></pre>
+<h4 id="6-下列关于运算符重载的描述中，（）是正确的。"><a href="#6-下列关于运算符重载的描述中，（）是正确的。" class="headerlink" title="6. 下列关于运算符重载的描述中，（）是正确的。"></a>6. 下列关于运算符重载的描述中，（）是正确的。</h4><p>A. 运算符重载可以改变操作数的个数</p>
+<p>B. 运算符重载可以改变优先级</p>
+<p>C. 运算符重载可以改变结合性</p>
+<p>D. 运算符重载不可以改变语法结构</p>
+<pre><code>D。不太清楚语法结构是什么意思，可能是指A、B、C都不能改？运算符重载还如原来的运算符一般，操作数个数、优先级、结合性都是不变的。
+</code></pre>
+<h4 id="7-下列关于运算符重载的表述中，正确的是（）。"><a href="#7-下列关于运算符重载的表述中，正确的是（）。" class="headerlink" title="7. 下列关于运算符重载的表述中，正确的是（）。"></a>7. 下列关于运算符重载的表述中，正确的是（）。</h4><p>A. C++已有的任何运算符都可以重载</p>
+<p>B. 运算符函数的返回类型不能声明为基本数据类型</p>
+<p>C. 在类型转换符函数的定义中不需要声明返回类型</p>
+<p>D. 可以通过运算符重载来创建C++中原来没有的运算符</p>
+<pre><code>C。类型转换运算符重载，如double应声明为operator double() const;。可见是不需要声明返回类型的。
+</code></pre>
+<h4 id="8-能用友元函数重载的运算符是（）。"><a href="#8-能用友元函数重载的运算符是（）。" class="headerlink" title="8. 能用友元函数重载的运算符是（）。"></a>8. 能用友元函数重载的运算符是（）。</h4><p>A. +</p>
+<p>B. &#x3D;</p>
+<p>C. []</p>
+<p>D.-&gt;</p>
+<pre><code>A。BCD都是被要求“必须”用成员函数重载的。另外，A作为二元运算符也只是“应该”用友元函数重载。其他“必须”用成员函数重载的运算符是-&gt;*和()。
+</code></pre>
+<h4 id="9-下列哪一项说法是不正确的"><a href="#9-下列哪一项说法是不正确的" class="headerlink" title="9. 下列哪一项说法是不正确的?()"></a>9. 下列哪一项说法是不正确的?()</h4><p>A. 运算符重载的实质是函数重载</p>
+<p>B. 运算符重载可以重载为普通函数,也成员可以重载为成员函数</p>
+<p>C. 运算符被多次重载时,根据实参的类型决定调用哪个运算符重载函数</p>
+<p>D. 运算符被多次重载时,根据函数类型决定调用哪个重载函数</p>
+<pre><code>D。C对D错。B严格来说，应该是“友元函数”而不是单纯的普通函数。如A所说，运算符重载实质是函数重载，函数重载是不能仅根据返回类型区分的，而是通过参数列表区分的。
+</code></pre>
+<h4 id="10-如何区分自增运算符重载的前置形式和后置形式？（）"><a href="#10-如何区分自增运算符重载的前置形式和后置形式？（）" class="headerlink" title="10. 如何区分自增运算符重载的前置形式和后置形式？（）"></a>10. 如何区分自增运算符重载的前置形式和后置形式？（）</h4><p>A. 重载时，前置形式的函数名是++operator，后置形式的函数名是operator ++</p>
+<p>B. 后置形式比前置形式多一个 int 类型的参数</p>
+<p>C. 无法区分，使用时不管前置形式还是后置形式，都调用相同的重载函数</p>
+<p>D. 前置形式比后置形式多一个 int 类型的参数</p>
+<pre><code>B。前置形式为operater++()，后置形式为operator++(int)。
+</code></pre>
+<h4 id="11-下列运算符中，不可以重载的是（）。"><a href="#11-下列运算符中，不可以重载的是（）。" class="headerlink" title="11. 下列运算符中，不可以重载的是（）。"></a>11. 下列运算符中，不可以重载的是（）。</h4><p>A. new</p>
+<p>B. ++</p>
+<p>C. .*</p>
+<p>D. []</p>
+<pre><code>C。比较容易考到的不能重载的运算符应该就是成员相关的.和.*，::以及三木运算符?:了。sizeof、typeid和类型转换相关还没有见过。
+</code></pre>
+<h1 id="Hw11"><a href="#Hw11" class="headerlink" title="Hw11"></a>Hw11</h1><h4 id="1-若重载为友元函数，函数定义格式如下："><a href="#1-若重载为友元函数，函数定义格式如下：" class="headerlink" title="1. 若重载为友元函数，函数定义格式如下：()"></a>1. 若重载为友元函数，函数定义格式如下：()</h4><p>&lt;类型&gt;operator&lt;运算符&gt;（&lt;参数列表&gt;）</p>
+<p>{</p>
+<p>&lt;函数体&gt;</p>
+<p>}</p>
+<pre><code>PTA上答案为F。网络解释是需要friend。我觉得没有道理，本应该就是T。记录此怪题。
+</code></pre>
+<h1 id="Hw12"><a href="#Hw12" class="headerlink" title="Hw12"></a>Hw12</h1><h4 id="1-Given"><a href="#1-Given" class="headerlink" title="1. Given:"></a>1. Given:</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Func1&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(T t)</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Func2&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"><span class="built_in">main</span>() &#123;</span><br><span class="line">    <span class="built_in">f</span>(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="The-result-is"><a href="#The-result-is" class="headerlink" title="The result is :"></a>The result is :</h4><p>A. Func1</p>
+<p>B. Func2</p>
+<p>C. nothing</p>
+<p>D. undetermined</p>
+<pre><code>A。在有多个函数和函数模板名字相同的情况下，编译器如下处理一条函数调用语句：
+
+1)先找参数完全匹配的普通函数（非由模板实例化而得的函数）
+
+2)再找参数完全匹配的模板函数
+
+3)再找经过自动类型转换后能够匹配的普通函数
+
+4)都找不到，则报错
+
+匹配模板函数时，不会进行自动类型转换。
+
+此处已存在参数完全匹配的普通函数，则不会再找模板函数，所以输出Func1。
+</code></pre>
+<h4 id="2-下列的模板说明中，正确的是-。"><a href="#2-下列的模板说明中，正确的是-。" class="headerlink" title="2. 下列的模板说明中，正确的是()。"></a>2. 下列的模板说明中，正确的是()。</h4><p>A. template &lt; typename T1, T2 &gt;</p>
+<p>B. template &lt; class T1, T2 &gt;</p>
+<p>C. template &lt; typename T1, typename T2 &gt;</p>
+<p>D. template ( typedef T1, typedef T2 )</p>
+<pre><code>C。用typename和class都可以，但是不能缺或者其他的。
+</code></pre>
+<h4 id="3-关于类模板，描述错误的是-。"><a href="#3-关于类模板，描述错误的是-。" class="headerlink" title="3. 关于类模板，描述错误的是()。"></a>3. 关于类模板，描述错误的是()。</h4><p>A. 一个普通基类不能派生类模板</p>
+<p>B. 类模板可以从普通类派生，也可以从类模板派生</p>
+<p>C. 根据建立对象时的实际数据类型，编译器把类模板实例化为模板类</p>
+<p>D. 函数的类模板参数需生成模板类并通过构造函数实例化</p>
+<pre><code>A。B反驳了A，像minisql的B+树中，B+树基本数据页类就是普通基类，而其派生类中间结点页类、叶结点页类都是类模板。在这里的描述中，类模板指的是原始的带万能类型的模板，模板类是向类模板输入模板参数后实例化得到的类。
+</code></pre>
+<h4 id="4-下列有关模板的描述，错误的是-。"><a href="#4-下列有关模板的描述，错误的是-。" class="headerlink" title="4. 下列有关模板的描述，错误的是____。"></a>4. 下列有关模板的描述，错误的是____。</h4><p>A. 模板把数据类型作为一个设计参数，称为参数化程序设计</p>
+<p>B. 使用时，模板参数与函数参数相同，是按位置而不是名称对应的</p>
+<p>C. 模板参数表中可以有类型参数和非类型参数</p>
+<p>D. 类模板与模板类是同一个概念</p>
+<pre><code>D。类模板-模板类-对象。模板参数表中的类型参数就是class或者typename所指明的万能类型，而非类型参数是直接在模板参数表中规定了类型的模板参数。比如模板参数表可以是&lt;class T, int size&gt;。
+</code></pre>
+<h4 id="5-模板函数的真正代码是在哪个时期产生的-。"><a href="#5-模板函数的真正代码是在哪个时期产生的-。" class="headerlink" title="5. 模板函数的真正代码是在哪个时期产生的____。"></a>5. 模板函数的真正代码是在哪个时期产生的____。</h4><p>A. 源程序中声明函数时</p>
+<p>B. 源程序中定义函数时</p>
+<p>C. 源程序中调用函数时</p>
+<p>D. 运行执行函数时</p>
+<pre><code>C。源程序调用函数模板，才会生成对应参数类型的模板函数的代码。
+</code></pre>
+<h4 id="6-类模板的使用实际上是将类模板实例化成一个-。"><a href="#6-类模板的使用实际上是将类模板实例化成一个-。" class="headerlink" title="6. 类模板的使用实际上是将类模板实例化成一个____。"></a>6. 类模板的使用实际上是将类模板实例化成一个____。</h4><p>A. 函数</p>
+<p>B. 对象</p>
+<p>C. 类</p>
+<p>D. 抽象类</p>
+<pre><code>C。模板类本质就是一个类。模板类继续实例化可以得到对象。抽象类则是根据有无纯虚函数划分的。
+</code></pre>
+<h4 id="7-下列选项中，哪一项是类模板实例化的时期-。"><a href="#7-下列选项中，哪一项是类模板实例化的时期-。" class="headerlink" title="7. 下列选项中，哪一项是类模板实例化的时期___。"></a>7. 下列选项中，哪一项是类模板实例化的时期___。</h4><p>A. 在编译时期进行</p>
+<p>B. 属于动态联编</p>
+<p>C. 在运行时进行</p>
+<p>D. 在连接时进行</p>
+<pre><code>A。类模板实例化为模板类是要产生相应的代码的，只能在编译阶段进行。动态联编就是动态绑定，与多态有关，与类模板实例化无关。
+</code></pre>
+<h4 id="8-下列关于pair-lt-gt-类模板的描述中，错误的是。"><a href="#8-下列关于pair-lt-gt-类模板的描述中，错误的是。" class="headerlink" title="8. 下列关于pair&lt;&gt;类模板的描述中，错误的是。"></a>8. 下列关于pair&lt;&gt;类模板的描述中，错误的是。</h4><p>A. pair&lt;&gt;类模板定义头文件utility中</p>
+<p>B. pair&lt;&gt;类模板作用是将两个数据组成一个数据，两个数据可以是同一个类型也可以是不同的类型</p>
+<p>C. 创建pair&lt;&gt;对象只能调用其构造函数</p>
+<p>D. pair&lt;&gt;类模拟提供了两个成员函数first与second来访问这的两个数据</p>
+<pre><code>C。创建pair&lt;&gt;对象还可以使用make_pair方法。
+</code></pre>
+<h1 id="Hw13"><a href="#Hw13" class="headerlink" title="Hw13"></a>Hw13</h1><h4 id="1-If-you-are-not-interested-in-the-contents-of-an-exception-object-the-catch-block-parameter-may-be-omitted"><a href="#1-If-you-are-not-interested-in-the-contents-of-an-exception-object-the-catch-block-parameter-may-be-omitted" class="headerlink" title="1. If you are not interested in the contents of an exception object, the catch block parameter may be omitted."></a>1. If you are not interested in the contents of an exception object, the catch block parameter may be omitted.</h4><pre><code>T。这里的意思应该是catch(int)这种。因为catch()是不允许的，catch(...)又不太符合这里的意思。catch(int)能够检测到抛出的int，但是又可以说没有参数。
+</code></pre>
+<h4 id="2-异常处理的catch-语句块必须紧跟try-语句块之后，这两个语句之间不能插入另外语句。"><a href="#2-异常处理的catch-语句块必须紧跟try-语句块之后，这两个语句之间不能插入另外语句。" class="headerlink" title="2. 异常处理的catch{ }语句块必须紧跟try{ }语句块之后，这两个语句之间不能插入另外语句。"></a>2. 异常处理的catch{ }语句块必须紧跟try{ }语句块之后，这两个语句之间不能插入另外语句。</h4><pre><code>T。
+</code></pre>
+<h4 id="3-What-is-wrong-in-the-following-code"><a href="#3-What-is-wrong-in-the-following-code" class="headerlink" title="3. What is wrong in the following code?"></a>3. What is wrong in the following code?</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">v[<span class="number">0</span>] = <span class="number">2.5</span>;</span><br></pre></td></tr></table></figure>
+
+<p>A. The program has a compile error because there are no elements in the vector.</p>
+<p>B. The program has a compile error because you cannot assign a double value to v[0].</p>
+<p>C. The program has a runtime error because there are no elements in the vector.</p>
+<p>D. The program has a runtime error because you cannot assign a double value to v[0].</p>
+<pre><code>C。程序出错的原因在于v是空的，但是却要强行对其中第一个元素赋值，导致runtime error。2.5原本数据类型为double，但是可以自动类型转换为int，如果有空间的话，v[0]将会被赋值为2，B、D错误。编译阶段无法发现“给vetcor中不存在的元素赋值”的这种错误，因此不是compile error，A错误。
+</code></pre>
+<h4 id="4-The-function-what-is-defined-in"><a href="#4-The-function-what-is-defined-in" class="headerlink" title="4. The function what() is defined in __."></a>4. The function what() is defined in __.</h4><p>A. exception</p>
+<p>B. runtime_error</p>
+<p>C. overflow_error</p>
+<p>D. bad_exception</p>
+<pre><code>A。what()用来查error信息的，当然是在exception中了。
+</code></pre>
+<h4 id="5-Which-of-the-following-statements-are-true"><a href="#5-Which-of-the-following-statements-are-true" class="headerlink" title="5. Which of the following statements are true?"></a>5. Which of the following statements are true?</h4><p>A. A custom exception class is just like a regular class.</p>
+<p>B. A custom exception class must always be derived from class exception.</p>
+<p>C. A custom exception class must always be derived from a derived class of class exception.</p>
+<p>D. A custom exception class must always be derived from class runtime_error.</p>
+<pre><code>A。可以将任何东西抛出为异常，那么自定义异常类当然就像一个普通类了。
+</code></pre>
+<h4 id="6-Suppose-Exception2-is-derived-from-Exception1-Analyze-the-following-code"><a href="#6-Suppose-Exception2-is-derived-from-Exception1-Analyze-the-following-code" class="headerlink" title="6. Suppose Exception2 is derived from Exception1. Analyze the following code."></a>6. Suppose Exception2 is derived from Exception1. Analyze the following code.</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">statement1;</span><br><span class="line"></span><br><span class="line">statement2;</span><br><span class="line"></span><br><span class="line">statement3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception1 ex1)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception2 ex2)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>A. If an exception of the Exeception2 type occurs, this exception is caught by the first catch block.</p>
+<p>B. If an exception of the Exeception2 type occurs, this exception is caught by the second catch block.</p>
+<p>C. The program has a compile error because these two catch blocks are in wrong order.</p>
+<p>D. The program has a runtime error because these two catch blocks are in wrong order.</p>
+<pre><code>A。糟糕的代码。catch的顺序中，由于is-A关系，基类在前就会导致直接被基类给catch了。不过编译还是会通过的，不过应该会给warning。
+</code></pre>
+<h4 id="7-Suppose-that-statement2-throws-an-exception-of-type-Exception2-in-the-following-statement"><a href="#7-Suppose-that-statement2-throws-an-exception-of-type-Exception2-in-the-following-statement" class="headerlink" title="7. Suppose that statement2 throws an exception of type Exception2 in the following statement:"></a>7. Suppose that statement2 throws an exception of type Exception2 in the following statement:</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">statement1;</span><br><span class="line"></span><br><span class="line">statement2;</span><br><span class="line"></span><br><span class="line">statement3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception1 ex1)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception2 ex2)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception3 ex3)</span><br><span class="line">&#123;</span><br><span class="line">statement4;</span><br><span class="line"><span class="keyword">throw</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">statement5;</span><br></pre></td></tr></table></figure>
+
+<p>A. statement2</p>
+<p>B. statement3</p>
+<p>C. statement4</p>
+<p>D. statement5</p>
+<pre><code>D。猜想问题是：statement2执行完后，下一条被执行的语句是什么？Exception2在statement2被抛出，语句块后面的statement3被抛弃不再执行，而Exception2很快被catch，但是什么都没有做。出了try-catch，执行statement5，也就是statement2下一条语句。
+</code></pre>
+<h4 id="8-Suppose-that-statement2-throws-an-exception-of-type-Exception2-in-the-following-statement"><a href="#8-Suppose-that-statement2-throws-an-exception-of-type-Exception2-in-the-following-statement" class="headerlink" title="8. Suppose that statement2 throws an exception of type Exception2 in the following statement:"></a>8. Suppose that statement2 throws an exception of type Exception2 in the following statement:</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">statement1;</span><br><span class="line"></span><br><span class="line">statement2;</span><br><span class="line"></span><br><span class="line">statement3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception1 ex1)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception2 ex2)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">catch</span> (Exception3 ex3)</span><br><span class="line">&#123;</span><br><span class="line">statement4;</span><br><span class="line"><span class="keyword">throw</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">statement5;</span><br></pre></td></tr></table></figure>
+
+<p>A. statement2</p>
+<p>B. statement3</p>
+<p>C. statement4</p>
+<p>D. statement5</p>
+<pre><code>C。与上一题有所不同的是，Exception3的catch块中是有语句的，因此会继续执行statement4。这里有趣的是throw;，即重抛异常，一般表示这里无法处理该异常，需要将其抛至更上层进行处理。
+</code></pre>
+<h4 id="9-下列关于异常的描述中，错误的是（）。"><a href="#9-下列关于异常的描述中，错误的是（）。" class="headerlink" title="9. 下列关于异常的描述中，错误的是（）。"></a>9. 下列关于异常的描述中，错误的是（）。</h4><p>A. 编译错属于异常，可以抛出</p>
+<p>B. 运行错属于异常</p>
+<p>C. 硬件故障也可当异常抛出</p>
+<p>D. 只要是编程者认为是异常的都可当异常抛出</p>
+<pre><code>A。编译阶段是无法抛出异常的，所以编译错误不可以当作异常抛出。
+</code></pre>
+<h4 id="10-下列关于重抛异常的描述中，错误的是。"><a href="#10-下列关于重抛异常的描述中，错误的是。" class="headerlink" title="10. 下列关于重抛异常的描述中，错误的是。()"></a>10. 下列关于重抛异常的描述中，错误的是。()</h4><p>A. 处理不了的异常，可以通过在catch结构中调用throw重新抛出异常，将当前异常传递到外部的try-catch结构中</p>
+<p>B. 重抛异常时只能从catch语句块或从catch块中的调用函数中完成</p>
+<p>C. 重抛的异常可以被同一个catch语句捕捉</p>
+<p>D. 可以单独使用throw关键字完成异常重抛</p>
+<pre><code>C。抛到更外层了，只能被更外层的catch捕捉。
+</code></pre>
+<h4 id="11-下列关于断言的描述中，错误的是。"><a href="#11-下列关于断言的描述中，错误的是。" class="headerlink" title="11. 下列关于断言的描述中，错误的是。()"></a>11. 下列关于断言的描述中，错误的是。()</h4><p>A. 断言是调试程序的一种手段</p>
+<p>B. 若断言情况发生，一般会终止程序</p>
+<p>C. 在C++中，宏assert()用来在调试阶段实现断言</p>
+<p>D. 断言在程序调试与发布版本中都可以使用断言</p>
+<pre><code>D。仅在调试(debug)版本中存在断言，发布(release)版本中的断言会被去掉。
+</code></pre>
+<h4 id="12-C-处理异常的机制是由（）3部分组成。"><a href="#12-C-处理异常的机制是由（）3部分组成。" class="headerlink" title="12. C++处理异常的机制是由（）3部分组成。()"></a>12. C++处理异常的机制是由（）3部分组成。()</h4><p>A. 编辑、编译和运行</p>
+<p>B. 检查、抛出和捕获</p>
+<p>C. 编辑、编译和捕获</p>
+<p>D. 检查、抛出和运行</p>
+<pre><code>B。
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/review/" rel="tag"># review</a>
+              <a href="/tags/oop/" rel="tag"># oop</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/07/oop-mid-review/" rel="prev" title="oop-mid-review">
+                  <i class="fa fa-chevron-left"></i> oop-mid-review
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/07/C-review/" rel="next" title="C-review">
+                  C-review <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TimeMachine</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
