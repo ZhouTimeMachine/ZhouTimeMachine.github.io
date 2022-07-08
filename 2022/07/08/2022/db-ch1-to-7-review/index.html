@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhoutimemachine.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Chap1: Introduction0. Outline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="db-ch1-to-7-review">
+<meta property="og:url" content="https://zhoutimemachine.github.io/2022/07/08/2022/db-ch1-to-7-review/index.html">
+<meta property="og:site_name" content="Welcome to TimeMachine&#39;s Blog">
+<meta property="og:description" content="Chap1: Introduction0. Outline">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220615191903132.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220615195320062.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220615223844467.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220615224703965.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220615225104415.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617110230195-16572890258731.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617110321802-16572890258732.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617110339977-16572890258743.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617110816786-16572890258744.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617110627793-16572890258745.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617110927185-16572890258746.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617111151480-16572890258747.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617111215457-16572890258748.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617111335694-16572890258749.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617112213290.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617112714880.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617120720022.png">
+<meta property="og:image" content="https://zhoutimemachine.github.io/images/2022/image-20220617121011226.png">
+<meta property="article:published_time" content="2022-07-08T14:14:26.000Z">
+<meta property="article:modified_time" content="2022-07-08T14:54:06.646Z">
+<meta property="article:author" content="TimeMachine">
+<meta property="article:tag" content="review">
+<meta property="article:tag" content="db">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhoutimemachine.github.io/images/2022/image-20220615191903132.png">
+
+
+<link rel="canonical" href="https://zhoutimemachine.github.io/2022/07/08/2022/db-ch1-to-7-review/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhoutimemachine.github.io/2022/07/08/2022/db-ch1-to-7-review/","path":"2022/07/08/2022/db-ch1-to-7-review/","title":"db-ch1-to-7-review"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>db-ch1-to-7-review | Welcome to TimeMachine's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Welcome to TimeMachine's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">coder, thinker and sleeper</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Chap1: Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Outline"><span class="nav-number">1.1.</span> <span class="nav-text">0. Outline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Database-Systems"><span class="nav-number">1.2.</span> <span class="nav-text">1. Database Systems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Purpose-of-Database-Systems"><span class="nav-number">1.3.</span> <span class="nav-text">2. Purpose of Database Systems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-View-of-Data"><span class="nav-number">1.4.</span> <span class="nav-text">3. View of Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">数据库三层模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F-schema-%E4%B8%8E%E5%AE%9E%E4%BE%8B-instance"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">模式(schema)与实例(instance)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7-Data-Independence"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">数据独立性(Data Independence)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Data-Models"><span class="nav-number">1.5.</span> <span class="nav-text">4. Data Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Database-Languages"><span class="nav-number">1.6.</span> <span class="nav-text">5. Database Languages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#classification"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">classification</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Database-Design"><span class="nav-number">1.7.</span> <span class="nav-text">6. Database Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Database-Engine"><span class="nav-number">1.8.</span> <span class="nav-text">7. Database Engine</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E7%BB%84%E4%BB%B6functional-components"><span class="nav-number">1.8.0.0.1.</span> <span class="nav-text">功能组件functional components</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Database-Users-and-Administrators"><span class="nav-number">1.9.</span> <span class="nav-text">8. Database Users and Administrators</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Database-Users"><span class="nav-number">1.9.0.1.</span> <span class="nav-text">Database Users</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-History-of-Database-Systems"><span class="nav-number">1.10.</span> <span class="nav-text">9. History of Database Systems</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap2-Relational-Model"><span class="nav-number">2.</span> <span class="nav-text">Chap2: Relational Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Outline-1"><span class="nav-number">2.1.</span> <span class="nav-text">0. Outline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-key"><span class="nav-number">2.2.</span> <span class="nav-text">1. key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-relational-algebra"><span class="nav-number">2.3.</span> <span class="nav-text">2. relational algebra</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap3-Introduction-to-SQL"><span class="nav-number">3.</span> <span class="nav-text">Chap3: Introduction to SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SQL"><span class="nav-number">3.1.</span> <span class="nav-text">1. SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DDL"><span class="nav-number">3.2.</span> <span class="nav-text">2. DDL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-integrity-constraints"><span class="nav-number">3.3.</span> <span class="nav-text">3. integrity constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DML"><span class="nav-number">3.4.</span> <span class="nav-text">4. DML</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap4-Intermediate-SQL"><span class="nav-number">4.</span> <span class="nav-text">Chap4: Intermediate SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-join"><span class="nav-number">4.1.</span> <span class="nav-text">1. join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SQL-Data-Types-and-Schemas"><span class="nav-number">4.2.</span> <span class="nav-text">2. SQL Data Types and Schemas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type-domain"><span class="nav-number">4.2.1.</span> <span class="nav-text">type, domain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Integrity-constraints"><span class="nav-number">4.3.</span> <span class="nav-text">3. Integrity constraints</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Assertion"><span class="nav-number">4.3.1.</span> <span class="nav-text">Assertion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-views"><span class="nav-number">4.4.</span> <span class="nav-text">4. views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Indices"><span class="nav-number">4.5.</span> <span class="nav-text">5. Indices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Transactions"><span class="nav-number">4.6.</span> <span class="nav-text">6. Transactions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Authorization"><span class="nav-number">4.7.</span> <span class="nav-text">7. Authorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap5-Advanced-SQL"><span class="nav-number">5.</span> <span class="nav-text">Chap5: Advanced SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Accessing-SQL-From-a-Programming-Language"><span class="nav-number">5.1.</span> <span class="nav-text">1. Accessing SQL From a Programming Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SQL-Functions"><span class="nav-number">5.2.</span> <span class="nav-text">2. SQL Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Trigger"><span class="nav-number">5.3.</span> <span class="nav-text">3. Trigger</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap6-Entity-Relationship-Model"><span class="nav-number">6.</span> <span class="nav-text">Chap6: Entity-Relationship Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-DB-Design-Process"><span class="nav-number">6.1.</span> <span class="nav-text">1. DB Design Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ER-model"><span class="nav-number">6.2.</span> <span class="nav-text">2. ER model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chap7-Relational-Database-Design"><span class="nav-number">7.</span> <span class="nav-text">Chap7: Relational Database Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-pitfall-of-bad-relations"><span class="nav-number">7.1.</span> <span class="nav-text">1. pitfall of bad relations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Decomposition-Lossless"><span class="nav-number">7.2.</span> <span class="nav-text">2. Decomposition Lossless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Forms"><span class="nav-number">7.3.</span> <span class="nav-text">3. Forms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Dependencies"><span class="nav-number">7.4.</span> <span class="nav-text">4. Dependencies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Functional-dependencies"><span class="nav-number">7.4.1.</span> <span class="nav-text">Functional dependencies</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TimeMachine"
+      src="/images/dog.jpg">
+  <p class="site-author-name" itemprop="name">TimeMachine</p>
+  <div class="site-description" itemprop="description">just enjoy yourself</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ZhouTimeMachine" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zhoutimemachine.github.io/2022/07/08/2022/db-ch1-to-7-review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dog.jpg">
+      <meta itemprop="name" content="TimeMachine">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to TimeMachine's Blog">
+      <meta itemprop="description" content="just enjoy yourself">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="db-ch1-to-7-review | Welcome to TimeMachine's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          db-ch1-to-7-review
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-07-08 22:14:26 / Modified: 22:54:06" itemprop="dateCreated datePublished" datetime="2022-07-08T22:14:26+08:00">2022-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Chap1-Introduction"><a href="#Chap1-Introduction" class="headerlink" title="Chap1: Introduction"></a>Chap1: Introduction</h1><h2 id="0-Outline"><a href="#0-Outline" class="headerlink" title="0. Outline"></a>0. Outline</h2><span id="more"></span>
+
+<ul>
+<li><p>数据库系统Database Systems</p>
+</li>
+<li><p>(使用)数据库系统的目的Purpose of Database Systems</p>
+</li>
+<li><p>数据视图View of Data</p>
+</li>
+<li><p>数据模型Data Models</p>
+</li>
+<li><p>数据库语言Database Languages</p>
+</li>
+<li><p>数据库设计Database Design</p>
+</li>
+<li><p>数据库引擎Database Engine</p>
+</li>
+<li><p>数据库用户与管理员Database Users and Administrators</p>
+</li>
+<li><p>数据库系统历史History of Database Systems</p>
+</li>
+</ul>
+<h2 id="1-Database-Systems"><a href="#1-Database-Systems" class="headerlink" title="1. Database Systems"></a>1. Database Systems</h2><p><strong>数据库</strong>是相互关联(interrelated)的企业数据的聚合(collection)，由<strong>DBMS</strong>(Database Management System)管理。 </p>
+<p><strong>DBMS</strong> 的主要目标是提供一种既方便(convenient)又高效(efficient)的存储(store)和检索(retrieve)数据库信息的方法。</p>
+<p>（数据库中的）数据管理包括<strong>定义</strong>信息存储结构(structures for <strong>storage</strong> of information)和提供信息操作机制(mechanisms for the <strong>manipulation</strong> of information)。</p>
+<p><strong>数据库系统</strong>必须确保存储信息的<strong>安全</strong>，即使系统崩溃(crashes)或者试图进行未授权(unauthorized)访问</p>
+<p>如果要在多个用户之间共享数据，系统必须提供<strong>并发控制</strong>(concurrency control)机制，以避免可能的异常(anomalous)结果。</p>
+<img src="/images/2022/image-20220615191903132.png" alt="image-20220615191903132" style="zoom:67%;" />
+
+<p>数据库-数据库管理系统DBMS-数据库应用程序的层次结构</p>
+<h2 id="2-Purpose-of-Database-Systems"><a href="#2-Purpose-of-Database-Systems" class="headerlink" title="2. Purpose of Database Systems"></a>2. Purpose of Database Systems</h2><p>直接基于文件系统(<strong>file systems</strong>)的数据库应用程序会招致诸多严重后果：</p>
+<ul>
+<li>数据<strong>冗余</strong> Data <strong>redundancy</strong>与<strong>不一致inconsistency</strong><ul>
+<li>文件格式繁多，文件间信息冗余、不一致multiple file formats, duplication of information in different files</li>
+</ul>
+</li>
+<li>数据<strong>孤立</strong> Data <strong>isolation</strong><ul>
+<li>multiple files and formats</li>
+</ul>
+</li>
+<li><strong>存取</strong>数据困难 Difficulty in <strong>accessing</strong> data<ul>
+<li>Need to write a new program to carry out each new task</li>
+</ul>
+</li>
+<li><strong>完整性</strong>问题 <strong>Integrity</strong> problems<ul>
+<li>完整性约束(Integrity constraints)隐式表达（<strong>显式</strong>表达stated explicitly比较好） </li>
+<li>维护与拓展：难以增加&#x2F;更改完整性约束</li>
+</ul>
+</li>
+<li><strong>原子性</strong>问题 <strong>Atomicity</strong> problems<ul>
+<li>错误Failures发生于数据库不一致状态inconsistent state(只有部分数据更新被执行partial updates carried out)</li>
+</ul>
+</li>
+<li><strong>并发访问异常</strong> <strong>Concurrent access</strong> anomalies<ul>
+<li>并发访问：性能需求</li>
+<li>不受控的并发访问将导致不一致inconsistencies</li>
+</ul>
+</li>
+<li><strong>安全性问题</strong> <strong>Security</strong> problems<ul>
+<li>需要限制用户的可访问数据范围</li>
+<li>认证Authentication</li>
+<li>权限Priviledge </li>
+<li>审计Audit</li>
+</ul>
+</li>
+</ul>
+<p>相对应地，数据库系统有如下特征：</p>
+<ul>
+<li><strong>数据持久性</strong>data persistence</li>
+<li><strong>数据访问便利性</strong>convenience in accessing data</li>
+<li><strong>数据完整性</strong>data integrity </li>
+<li><strong>多用户并发控制</strong>concurrency control for multiple user</li>
+<li><strong>故障恢复</strong>failure recovery</li>
+<li><strong>安全控制</strong>security control</li>
+</ul>
+<h2 id="3-View-of-Data"><a href="#3-View-of-Data" class="headerlink" title="3. View of Data"></a>3. View of Data</h2><h4 id="数据库三层模型"><a href="#数据库三层模型" class="headerlink" title="数据库三层模型"></a>数据库三层模型</h4><img src="/images/2022/image-20220615195320062.png" alt="image-20220615195320062" style="zoom:67%;" />
+
+<p>数据库可以分为视图层、逻辑层和物理层。分别由视图&#x2F;逻辑映射、逻辑&#x2F;物理映射进行变换。</p>
+<h4 id="模式-schema-与实例-instance"><a href="#模式-schema-与实例-instance" class="headerlink" title="模式(schema)与实例(instance)"></a>模式(schema)与实例(instance)</h4><ul>
+<li><strong>Schema</strong>：数据库的逻辑结构 <ul>
+<li><strong>Physical schema</strong>: database design at the physical level</li>
+<li><strong>Logical schema</strong>: database design at the logical level</li>
+</ul>
+</li>
+<li><strong>Instance</strong>：特定时间点，数据库的实际内容</li>
+</ul>
+<h4 id="数据独立性-Data-Independence"><a href="#数据独立性-Data-Independence" class="headerlink" title="数据独立性(Data Independence)"></a>数据独立性(Data Independence)</h4><ul>
+<li><strong>Physical Data Independence</strong>：能够在不修改逻辑模式的前提下修改物理模式的能力<ul>
+<li>应用程序依赖于逻辑模式即可</li>
+<li>一般来说，应明确定义各层次、部分之间的接口，以便某些部分的更改不会严重影响其他部分。（即好好设计logical&#x2F;physical mapping）</li>
+</ul>
+</li>
+<li><strong>Logical Data Independence</strong>：能够在不修改用户视图模式的前提下修改逻辑模式的能力<ul>
+<li>需要好好设计view&#x2F;logical mapping</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-Data-Models"><a href="#4-Data-Models" class="headerlink" title="4. Data Models"></a>4. Data Models</h2><ul>
+<li><p>A collection of tools for describing </p>
+<ul>
+<li>Data</li>
+<li>Data relationships</li>
+<li>Data semantics(<strong>语义</strong>)</li>
+<li>Data constraints(<strong>约束</strong>)</li>
+</ul>
+</li>
+<li><p><strong>Relational model</strong>(<strong>关系模型</strong>)</p>
+</li>
+<li><p>Entity-Relationship data model</p>
+</li>
+<li><p>Object-based data models </p>
+<ul>
+<li>Object-oriented <strong>(面向对象数据模型)</strong></li>
+<li>Object-relational <strong>(对象-关系模型模型)</strong></li>
+</ul>
+</li>
+<li><p>Semistructured data model (XML)(<strong>半结构化数据模型</strong>)</p>
+</li>
+<li><p>Other older models:</p>
+<ul>
+<li>Network model (<strong>网状模型</strong>)</li>
+<li>Hierarchical model(<strong>层次模型</strong>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-Database-Languages"><a href="#5-Database-Languages" class="headerlink" title="5. Database Languages"></a>5. Database Languages</h2><h4 id="classification"><a href="#classification" class="headerlink" title="classification"></a>classification</h4><ul>
+<li>Data Definition Language (DDL) ：产生templates stored in <strong>data dictionary</strong><ul>
+<li>data dictionary：包括metadata<ul>
+<li>database schema</li>
+<li>integrity constraints：primary key, referential integrity</li>
+<li>authorization</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data Manipulation Language (DML) <ul>
+<li>Language for accessing and manipulating the data organized by the appropriate data model</li>
+<li>also known as <strong>query</strong> language</li>
+<li>2类 <ul>
+<li><strong>Procedural</strong> – 用户指定所需data，如何得到data</li>
+<li><strong>Declarative (nonprocedural)</strong> – 用户只需指定所需data</li>
+</ul>
+</li>
+<li><strong>SQL</strong>：最广泛应用的query language</li>
+</ul>
+</li>
+<li>SQL Query Language</li>
+<li>Application Program Interface （API）<ul>
+<li>非过程查询语言（如SQL）不如通用图灵机强大。</li>
+<li>SQL不支持用户输入、显示器输出或网络通信等操作。</li>
+<li>此类计算和操作必须用宿主语言(<strong>host language</strong>)编写（C&#x2F;C++, Java or Python.）</li>
+<li>应用程序通常通过以下方式之一访问数据库：<ul>
+<li>语言扩展以允许嵌入式SQL (<strong>embedded SQL</strong>)</li>
+<li>API(e.g., ODBC&#x2F;JDBC)，允许SQL查询语句被送入数据库</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-Database-Design"><a href="#6-Database-Design" class="headerlink" title="6. Database Design"></a>6. Database Design</h2><p>ER模型与规范化理论(Normalization Theory)</p>
+<h2 id="7-Database-Engine"><a href="#7-Database-Engine" class="headerlink" title="7. Database Engine"></a>7. Database Engine</h2><h5 id="功能组件functional-components"><a href="#功能组件functional-components" class="headerlink" title="功能组件functional components"></a>功能组件functional components</h5><ul>
+<li><strong>storage manager</strong>存储管理<ul>
+<li>提供接口：底层数据与提交给系统的应用程序查询之间</li>
+<li>所负责任务：<ul>
+<li>操作系统文件管理器的交互</li>
+<li>数据高效存储、检索和更新</li>
+</ul>
+</li>
+<li>包括：<ul>
+<li>文件管理器File manager</li>
+<li>缓冲区管理器Buffer manager</li>
+<li>权限与完整性管理器Authorization and integrity manager</li>
+<li>事务管理器Transaction manager</li>
+</ul>
+</li>
+<li>作为物理系统实现，storage manager实现了如下数据结构：<ul>
+<li>数据文件Data files–存储数据库本身</li>
+<li>数据字典Data dictionary–存储数据库结构的元数据，特别是模式。</li>
+<li>索引Indices–提供对数据项的快速访问。</li>
+<li>统计数据Statistical data</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>query processor</strong> component查询处理<ul>
+<li>DDL解释器 <strong>DDL interpreter</strong>——解释DDL语句并在数据字典中记录定义。</li>
+<li>DML编译器 <strong>DML compiler</strong>——将查询语言中DML语句转换为评估计划(evaluation plan)，评估计划由查询评估引擎(query evaluation engine)能理解的底层指令组成。<ul>
+<li>DML编译器执行<strong>查询优化</strong>，即从各种备选方案中选择成本最低的评估计划。</li>
+</ul>
+</li>
+<li>查询评估引擎 <strong>Query evaluation engine</strong>——执行DML编译器生成的底层指令。</li>
+<li>Parsing and translation - Optimization - Evaluation</li>
+<li><img src="/images/2022/image-20220615223844467.png" alt="image-20220615223844467" style="zoom:67%;" /></li>
+</ul>
+</li>
+<li><strong>transaction management</strong> component事务管理<ul>
+<li>事务<strong>transaction</strong>：在数据库应用程序中执行单个逻辑功能的操作集合。</li>
+<li>恢复管理器<strong>Recover Manager</strong>：确保数据库在出现故障时仍保持一致（consistent）状态。故障包括系统故障(system failures)（电源故障power failure, 操作系统崩溃OS crashes等）和事务故障(transaction failures)。</li>
+<li>并发控制管理器<strong>Concurrency-control manager</strong>：控制并发事务之间的交互，以确保数据库的一致性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-Database-Users-and-Administrators"><a href="#8-Database-Users-and-Administrators" class="headerlink" title="8. Database Users and Administrators"></a>8. Database Users and Administrators</h2><h4 id="Database-Users"><a href="#Database-Users" class="headerlink" title="Database Users"></a>Database Users</h4><img src="/images/2022/image-20220615224703965.png" alt="image-20220615224703965" style="zoom:67%;" />
+
+<p>Naive users：只与数据库应用程序交互(use interfaces)</p>
+<p>Application programmer：Database application, API（通过DML calls交互）</p>
+<p>sophisticated(Data Analyst)：DBMS, query tools</p>
+<p>DBA(Database Administrator)：DBMS, administration tools</p>
+<p>协调(coordinate)数据库系统的所有活动；对企业的信息资源和需求有很好的了解。</p>
+<ul>
+<li>Tasks<ul>
+<li>模式定义<strong>Schema definition</strong></li>
+<li>存储结构和访问方法定义<strong>Storage structure and access method definition</strong></li>
+<li>模式和物理组织方式修改<strong>Schema and physical organization modification</strong></li>
+<li>授权用户访问数据库<strong>Granting user authority to access the database</strong></li>
+<li>指定完整性约束<strong>Specifying integrity constraints</strong></li>
+<li>充当与用户的联络人<strong>Acting as liaison with users</strong></li>
+<li>监控性能和响应需求变化-性能调整<strong>Monitoring performance and responding to changes in requirements - Performance Tuning</strong></li>
+</ul>
+</li>
+</ul>
+<img src="/images/2022/image-20220615225104415.png" alt="image-20220615225104415" style="zoom:67%;" />
+
+<h2 id="9-History-of-Database-Systems"><a href="#9-History-of-Database-Systems" class="headerlink" title="9. History of Database Systems"></a>9. History of Database Systems</h2><ul>
+<li>1950s-early 1960s：<strong>magnetic tapes</strong>, sequential access</li>
+<li>1960s：<strong>hard disks</strong>(direct access), network&#x2F;hierarchical model<ul>
+<li>1961, <strong>IDS</strong>, GE, Charles W.Bachman(father of databases, 1973 Turing)</li>
+<li>1968, IBM <strong>IMS</strong></li>
+</ul>
+</li>
+<li>1970s：Business Aplications(OLTP)<ul>
+<li>1970, <strong>relational model</strong>, Edgar F. Codd(1981 Turing)</li>
+<li>1974, <strong>System R</strong> prototype, Jim Gray, IBM</li>
+<li>1974,  <strong>Ingres</strong> prototype, Michael Stonebraker</li>
+<li>2004, SIGMOD renamed its highest prize to the <strong>SIGMOD Edgar F. Codd Innovations Award</strong>(数据库领域最高奖).</li>
+</ul>
+</li>
+<li>1980s:<ul>
+<li>RDBMS implementation </li>
+<li>Research relational prototypes evolve into commercial system<ul>
+<li>Oracle(1983), IBM DB2(1983), Informix(1985), Sybase(1987), Postgres (PostgresSQL,1989)</li>
+</ul>
+</li>
+<li>Parallel&#x2F;Distributed&#x2F;Object-oriented&#x2F;Object-relational database systems</li>
+<li>Extended to Engineering Applications</li>
+</ul>
+</li>
+<li>1998 Turing：Jim Gray(also SIGMOD)，disappear Jan. 28 2007</li>
+<li>1990s:<ul>
+<li><strong>Business intelligence(BI)</strong></li>
+<li>Large decision support and <strong>data-mining</strong> applications</li>
+<li>Large multi-terabyte <strong>data warehouses</strong></li>
+<li><strong>OLAP</strong>(Online Analytical Processing)</li>
+<li>Emergence of Web commerce<ul>
+<li>The Web changes everything</li>
+<li>New workloads – performance, concurrency, availability</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2000s:<ul>
+<li><strong>Web Era</strong><ul>
+<li>Big data</li>
+</ul>
+</li>
+<li><strong>XML</strong> and XQuery standards</li>
+<li>Automated database administration</li>
+<li><strong>NoSQL</strong>(not only SQL)<ul>
+<li>looser consistency, horizontal scaling and higher availability</li>
+<li>useful for <strong>big data</strong></li>
+<li><strong>MongoDB, Cassandra, HBase</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2010s:<ul>
+<li><strong>NewSQL</strong></li>
+<li><strong>Cloud database</strong></li>
+<li>Blockchain</li>
+<li>Autonomous Database (AI powered Database)</li>
+</ul>
+</li>
+<li><strong>NewSQL</strong>：VoltDB, NuoDB, Clustrix, JustOneDB</li>
+<li>2014 Turing：Michael Stonebraker</li>
+<li>2010s: <strong>Cloud Database</strong><ul>
+<li>A cloud database is a database that typically runs on a cloud computing platform, access to it is provided as a service.</li>
+<li><strong>Characteristics</strong><ul>
+<li>Scalability, High availability, Resource transparency, Trustiness, Security and privacy</li>
+</ul>
+</li>
+<li><strong>Vendors</strong><ul>
+<li><strong>Amazon</strong> RDS&#x2F;DynamoDB&#x2F;SimpleDB</li>
+<li><strong>Microsoft</strong> Azure SQL Database </li>
+<li><strong>Google</strong> Aurora</li>
+<li><strong>Huawei</strong> GaussDB</li>
+<li><strong>Aliyun</strong> PolarDB</li>
+<li><strong>Tencent</strong> TDSQL-C&#x2F; TencentDB</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Chap2-Relational-Model"><a href="#Chap2-Relational-Model" class="headerlink" title="Chap2: Relational Model"></a>Chap2: Relational Model</h1><h2 id="0-Outline-1"><a href="#0-Outline-1" class="headerlink" title="0. Outline"></a>0. Outline</h2><ul>
+<li>键值</li>
+<li>关系代数</li>
+</ul>
+<h2 id="1-key"><a href="#1-key" class="headerlink" title="1. key"></a>1. key</h2><ul>
+<li>superkey</li>
+<li>candidate key：minimal superkey</li>
+<li>primary key：selected candidate key</li>
+<li>foreign key：referencing-&gt;referenced(primary key)</li>
+<li>referential integrity</li>
+</ul>
+<h2 id="2-relational-algebra"><a href="#2-relational-algebra" class="headerlink" title="2. relational algebra"></a>2. relational algebra</h2><ul>
+<li>“Pure” languages:<ul>
+<li>Relational algebra：非图灵机等价</li>
+<li>Tuple&#x2F;Domain relational calculus</li>
+</ul>
+</li>
+<li>6 basic<ul>
+<li>select：条件称为<strong>selection predicate</strong></li>
+<li>project</li>
+<li>union</li>
+<li>set difference<ul>
+<li>union, set differenct都要求same arity，对应属性的type要compatible</li>
+</ul>
+</li>
+<li>Cartesian product</li>
+<li>rename</li>
+</ul>
+</li>
+<li>Additional<ul>
+<li>set intersection</li>
+<li>natural join、theta join</li>
+<li>assignment</li>
+<li>outer join</li>
+<li>semijoin</li>
+<li>division operation</li>
+</ul>
+</li>
+<li>extended<ul>
+<li><strong>Generalized Projection</strong>：arithmetic functions of attributes</li>
+<li><strong>Aggregation function</strong>：avg、min、max、sum、count</li>
+</ul>
+</li>
+<li>multiset中duplicates树<ul>
+<li>selection: 满足条件，保持</li>
+<li>projection: 保持</li>
+<li>cross product: <strong>m</strong> of <em>t1</em> in <em>r</em>, <strong>n</strong> of <em>t2</em> in <em>s</em>, <strong>mn</strong> in <em>r</em>  x <em>s</em></li>
+<li>union: m + n</li>
+<li>intersection: min(m, n)</li>
+<li>difference: min(0, m - n)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Chap3-Introduction-to-SQL"><a href="#Chap3-Introduction-to-SQL" class="headerlink" title="Chap3: Introduction to SQL"></a>Chap3: Introduction to SQL</h1><h2 id="1-SQL"><a href="#1-SQL" class="headerlink" title="1. SQL"></a>1. SQL</h2><ul>
+<li>Structured Query Language(SQL)</li>
+</ul>
+<h2 id="2-DDL"><a href="#2-DDL" class="headerlink" title="2. DDL"></a>2. DDL</h2><ul>
+<li>包含schema, domain, integrity constraints, indices, security+authorization, physical storage structure</li>
+<li>type<ul>
+<li>(var)char, int, smallint, numeric(p, d), real, double, float</li>
+<li>date(ymd), time(hms), timestamp(date+time), interval</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-integrity-constraints"><a href="#3-integrity-constraints" class="headerlink" title="3. integrity constraints"></a>3. integrity constraints</h2><ul>
+<li>not null</li>
+<li>primary key()</li>
+<li>foreign key() references r()<ul>
+<li>on delete&#x2F;update cascade&#x2F;set null&#x2F;restrict&#x2F;set default</li>
+</ul>
+</li>
+<li>alter<ul>
+<li>alter table r add A D</li>
+<li>alter table r drop A</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-DML"><a href="#4-DML" class="headerlink" title="4. DML"></a>4. DML</h2><ul>
+<li>duplicates：distinct&#x2F;all(default)</li>
+<li>between闭区间</li>
+<li>string: like ‘通配符’<ul>
+<li>%配string, _配字符</li>
+<li>逃逸字符用\，或用escape指定</li>
+</ul>
+</li>
+<li>order by … desc&#x2F;asc(default)</li>
+<li>limit offset&#x3D;0, cnt</li>
+<li>union, intersect, except<ul>
+<li>默认去duplicates，可+all</li>
+</ul>
+</li>
+<li>含null算术得null，比较得unknown，is null判断</li>
+<li>除count的聚合函数忽略null，如只有null返回null</li>
+<li>嵌套子查询<ul>
+<li>set membership：(not) in</li>
+<li>set comparison：some, all</li>
+<li>scalar subquery</li>
+<li>(not) exists</li>
+<li>unique（嵌套子查询不可distinct）</li>
+</ul>
+</li>
+<li>delete from … where</li>
+<li>insert into … values()</li>
+<li>insert into t1 select … from t2</li>
+<li>update … set … where</li>
+<li>case when then else end</li>
+</ul>
+<h1 id="Chap4-Intermediate-SQL"><a href="#Chap4-Intermediate-SQL" class="headerlink" title="Chap4: Intermediate SQL"></a>Chap4: Intermediate SQL</h1><h2 id="1-join"><a href="#1-join" class="headerlink" title="1. join"></a>1. join</h2><ul>
+<li>join <strong>type</strong>：inner join, left&#x2F;right&#x2F;full outer join</li>
+<li>join <strong>condition</strong>：natural, on…, using …</li>
+</ul>
+<h2 id="2-SQL-Data-Types-and-Schemas"><a href="#2-SQL-Data-Types-and-Schemas" class="headerlink" title="2. SQL Data Types and Schemas"></a>2. SQL Data Types and Schemas</h2><h3 id="type-domain"><a href="#type-domain" class="headerlink" title="type, domain"></a>type, domain</h3><ul>
+<li>create type … as numeric(12, 2)</li>
+<li>create domain … char(20) not null</li>
+<li>create domain … char(20)<ul>
+<li>constraint (name)</li>
+<li>check(value in());</li>
+</ul>
+</li>
+<li>Large-Object Types<ul>
+<li>blob: binary large object</li>
+<li>clob: character large object</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Integrity-constraints"><a href="#3-Integrity-constraints" class="headerlink" title="3. Integrity constraints"></a>3. Integrity constraints</h2><ul>
+<li>not null</li>
+<li>primary key</li>
+<li>unique</li>
+<li>check()：可嵌套查询，但未常实现</li>
+<li>foreign key</li>
+</ul>
+<h3 id="Assertion"><a href="#Assertion" class="headerlink" title="Assertion"></a>Assertion</h3><p>create assertion (name) check …</p>
+<h2 id="4-views"><a href="#4-views" class="headerlink" title="4. views"></a>4. views</h2><p>create view v as …</p>
+<p>插入view，也会改变原relation</p>
+<p>物理view</p>
+<h2 id="5-Indices"><a href="#5-Indices" class="headerlink" title="5. Indices"></a>5. Indices</h2><p>create index (name) on r(A)</p>
+<h2 id="6-Transactions"><a href="#6-Transactions" class="headerlink" title="6. Transactions"></a>6. Transactions</h2><ul>
+<li><p>commit, rollback</p>
+</li>
+<li><p>SET AUTOCOMMIT &#x3D; 0</p>
+</li>
+<li><p>serializable, repeatable read, read commit, read uncommit</p>
+</li>
+<li><p>ACID</p>
+</li>
+</ul>
+<h2 id="7-Authorization"><a href="#7-Authorization" class="headerlink" title="7. Authorization"></a>7. Authorization</h2><ul>
+<li>select, insert, update, delete</li>
+<li>index, resources, alteration, drop</li>
+<li>grant (priv) on () to (user)</li>
+<li>revoke (priv) on () from (user)</li>
+<li>DCL</li>
+<li>create role (name)</li>
+<li>grant (role) to (user)</li>
+<li>grant reference () on () to()</li>
+<li>grant with grant option</li>
+<li>revoke cascade&#x2F;restrict</li>
+</ul>
+<h1 id="Chap5-Advanced-SQL"><a href="#Chap5-Advanced-SQL" class="headerlink" title="Chap5: Advanced SQL"></a>Chap5: Advanced SQL</h1><h2 id="1-Accessing-SQL-From-a-Programming-Language"><a href="#1-Accessing-SQL-From-a-Programming-Language" class="headerlink" title="1. Accessing SQL From a Programming Language"></a>1. Accessing SQL From a Programming Language</h2><ul>
+<li>API, O(Open)DBC(Connectivity)&#x2F;J(Java)DBC, Embedded SQL(in C), SQLJ, JP(Persistence)A(API)</li>
+</ul>
+<h2 id="2-SQL-Functions"><a href="#2-SQL-Functions" class="headerlink" title="2. SQL Functions"></a>2. SQL Functions</h2><img src="/images/2022/image-20220617110230195-16572890258731.png" alt="image-20220617110230195"  />
+
+<img src="/images/2022/image-20220617110321802-16572890258732.png" alt="image-20220617110321802"  />
+
+<img src="/images/2022/image-20220617110339977-16572890258743.png" alt="image-20220617110339977"  />
+
+<img src="/images/2022/image-20220617110816786-16572890258744.png" alt="image-20220617110816786" />
+
+<img src="/images/2022/image-20220617110627793-16572890258745.png" alt="image-20220617110627793" />
+
+<img src="/images/2022/image-20220617110927185-16572890258746.png" alt="image-20220617110927185" />
+
+<h2 id="3-Trigger"><a href="#3-Trigger" class="headerlink" title="3. Trigger"></a>3. Trigger</h2><ul>
+<li><p>insert, delete, update</p>
+</li>
+<li><p>before, after</p>
+</li>
+<li><p>referencing new&#x2F;old row&#x2F;table as</p>
+</li>
+<li><p>for each statement&#x2F;row</p>
+</li>
+</ul>
+<img src="/images/2022/image-20220617111151480-16572890258747.png" alt="image-20220617111151480" />
+
+<img src="/images/2022/image-20220617111215457-16572890258748.png" alt="image-20220617111215457" />
+
+<img src="/images/2022/image-20220617111335694-16572890258749.png" alt="image-20220617111335694" />
+
+<h1 id="Chap6-Entity-Relationship-Model"><a href="#Chap6-Entity-Relationship-Model" class="headerlink" title="Chap6: Entity-Relationship Model"></a>Chap6: Entity-Relationship Model</h1><h2 id="1-DB-Design-Process"><a href="#1-DB-Design-Process" class="headerlink" title="1. DB Design Process"></a>1. DB Design Process</h2><img src="/images/2022/image-20220617112213290.png" alt="image-20220617112213290" style="zoom:67%;" />
+
+<ul>
+<li>avoid：<strong>redundancy</strong> and <strong>incompleteness</strong></li>
+</ul>
+<h2 id="2-ER-model"><a href="#2-ER-model" class="headerlink" title="2. ER model"></a>2. ER model</h2><ul>
+<li>roles<ul>
+<li><img src="/images/2022/image-20220617112714880.png" alt="image-20220617112714880" style="zoom:80%;" /></li>
+</ul>
+</li>
+<li>binary&#x2F;ternary relationship</li>
+<li>attributes(with domain)<ul>
+<li>simple&#x2F;composite</li>
+<li>single-valued&#x2F;multivalued</li>
+<li>derived</li>
+</ul>
+</li>
+<li>weak entity set-&gt;identifying entity set<ul>
+<li>discriminator&#x2F;partial key</li>
+</ul>
+</li>
+<li>Specialization&#x2F;Generalization<ul>
+<li>Top-down, attribute inheritance&#x2F; bottom-up</li>
+<li>disjoint&#x2F;overlapping</li>
+<li>total&#x2F;partial(completeness constraint)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Chap7-Relational-Database-Design"><a href="#Chap7-Relational-Database-Design" class="headerlink" title="Chap7: Relational Database Design"></a>Chap7: Relational Database Design</h1><h2 id="1-pitfall-of-bad-relations"><a href="#1-pitfall-of-bad-relations" class="headerlink" title="1. pitfall of bad relations"></a>1. pitfall of bad relations</h2><ul>
+<li>信息重复Information repetition</li>
+<li>插入异常Insertion anomalies</li>
+<li>更新困难Update difficulty</li>
+</ul>
+<h2 id="2-Decomposition-Lossless"><a href="#2-Decomposition-Lossless" class="headerlink" title="2. Decomposition Lossless"></a>2. Decomposition Lossless</h2><ul>
+<li>R-&gt;R1,R2，充要条件<ul>
+<li>$R_1\cap R_2\rightarrow R_1$</li>
+<li>$R_1\cap R_2\rightarrow R_2$</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Forms"><a href="#3-Forms" class="headerlink" title="3. Forms"></a>3. Forms</h2><ul>
+<li>第一范式First Normal Form：各attribute都atomic（不可分）</li>
+<li>Boyce-Codd Normal Form(BCNF)：任意函数依赖$\alpha\rightarrow\beta$，要么trivial，要么$\alpha$为超键</li>
+<li>3NF：BCNF必3NF。若$\beta-\alpha$的任意属性都在整体$R$的某candidate key中，也属3NF。</li>
+<li>4NF：类似BCNF的定义。若4NF，必BCNF。</li>
+</ul>
+<h2 id="4-Dependencies"><a href="#4-Dependencies" class="headerlink" title="4. Dependencies"></a>4. Dependencies</h2><h3 id="Functional-dependencies"><a href="#Functional-dependencies" class="headerlink" title="Functional dependencies"></a>Functional dependencies</h3><ul>
+<li><p>functional&#x2F;multivalued dependencies</p>
+</li>
+<li><p>legal instance：满足现实约束</p>
+</li>
+<li><p>superkey：K is superkey等价于$K\rightarrow R$</p>
+</li>
+<li><p>trivial：$A\rightarrow B$ is trivial if $B\subset A$</p>
+</li>
+<li><p>closure：all FDs(different from attribute closure)</p>
+</li>
+<li><p>Armstrong’s Axioms:</p>
+<ul>
+<li><img src="/images/2022/image-20220617120720022.png" alt="image-20220617120720022" /></li>
+<li>sound and complete</li>
+</ul>
+</li>
+<li><p>Additional</p>
+<ul>
+<li><img src="/images/2022/image-20220617121011226.png" alt="image-20220617121011226" /></li>
+</ul>
+</li>
+<li><p>Canonial Cover：去除所有<strong>Extraneous Attributes</strong></p>
+</li>
+<li><p>dependency preserving</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/review/" rel="tag"># review</a>
+              <a href="/tags/db/" rel="tag"># db</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/08/2022/ads-final-review/" rel="prev" title="ads-final-review">
+                  <i class="fa fa-chevron-left"></i> ads-final-review
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/08/2022/db-ch12-to-19-review/" rel="next" title="db-ch12-to-19-review">
+                  db-ch12-to-19-review <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TimeMachine</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
