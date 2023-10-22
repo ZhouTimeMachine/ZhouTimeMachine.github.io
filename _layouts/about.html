@@ -29,23 +29,23 @@ layout: default
               alt=page.profile.image
               cache_bust=true -%}
             {% endif -%}
-            <!-- Social -->
-            {%- if page.social %}
-              <div class="social">
-                <div class="contact-icons">
-                  {% include social.html %}
-                </div>
-              </div>
-            {%- endif %}
           </div>
           {%- endif %}
 
           <div class="clearfix">
             {{ content }}
+            <!-- Social -->
+            {%- if page.social %}
+            <div class="social">
+              <div class="contact-icons">
+                {% include social.html %}
+              </div>
+            </div>
+            {%- endif %}
           </div>
 
           <!-- News -->
-          <h2 style="color: inherit;">news</h2>
+          <h2 style="color: inherit;">News</h2>
           {%- include news.html limit=true %}
 
           <!-- Latest posts -->
