@@ -29,10 +29,13 @@ layout: default
               alt=page.profile.image
               cache_bust=true -%}
             {% endif -%}
-            {%- if page.profile.more_info %}
-            <div class="more-info">
-              {{ page.profile.more_info }}
-            </div>
+            <!-- Social -->
+            {%- if page.social %}
+              <div class="social">
+                <div class="contact-icons">
+                  {% include social.html %}
+                </div>
+              </div>
             {%- endif %}
           </div>
           {%- endif %}
@@ -42,10 +45,8 @@ layout: default
           </div>
 
           <!-- News -->
-          {% if page.news and site.announcements.enabled -%}
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
-            {%- include news.html limit=true %}
-          {%- endif %}
+          <h2 style="color: inherit;">news</h2>
+          {%- include news.html limit=true %}
 
           <!-- Latest posts -->
           {% if page.latest_posts -%}
@@ -59,19 +60,8 @@ layout: default
             {%- include selected_papers.html %}
           {%- endif %}
 
-          <!-- Social -->
-          {%- if page.social %}
-            <div class="social">
-              <div class="contact-icons">
-                {% include social.html %}
-              </div>
-
-              <div class="contact-note">
-                {{ site.contact_note }}
-              </div>
-
-            </div>
-          {%- endif %}
+          <h2 style="color: inherit;">Teaching Assistant</h2>
+          {%- include teaching.html %}
         </article>
 
 </div>
