@@ -18,7 +18,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I'm an undergraduate student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology ([Turing Class](http://www.en.cs.zju.edu.cn/turing_honors_class/list.htm), [Chu Kochen Honors College](http://ckc.zju.edu.cn/ckcen/_t1906/wbout/list.psp)).
+I'm an undergraduate student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology ([Turing Class](http://www.en.cs.zju.edu.cn/turing_honors_class/list.htm), [Chu Kochen Honors College](http://ckc.zju.edu.cn/ckcen/_t1906/wbout/list.psp)). Advised by [Prof. Chunhua Shen](https://cshen.github.io/), I'm also a coming PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), starting from 2024.9.
 
-I'm still exploring my interest in research, including Computer Vision and AI for Science. During the exploration, my contribution is acknowledged in [Modeling Protein Structure Using Geometric Vector Field Networks](https://www.biorxiv.org/content/10.1101/2023.05.07.539736v1).
+I'm still exploring my interest in research, including *generative modeling*, *computer vision* and *AI for science*. I eagerly look forward to the collision of ideas, if you have any questions or ideas (not limited to my research topics, mathematics, physics, or even muisc, literature and philosophy are welcome), please don't hesitate to email me at <a href="mailto:zhoujianjun@zju.edu.cn">zhoujianjun@zju.edu.cn<a/>.
 
