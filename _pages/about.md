@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: First year CS PhD @<a href="https://www.zju.edu.cn/english/">ZJU</a>, advised by Prof. <a href='https://cshen.github.io/'>Chunhua Shen</a>
+subtitle: First year CS PhD Student@<a href="https://www.zju.edu.cn/english/">ZJU</a>, advised by Prof. <a href='https://cshen.github.io/'>Chunhua Shen</a>
 
 profile:
   align: left
