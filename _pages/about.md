@@ -9,8 +9,11 @@ profile:
   image: profile.jpg
   image_circular: false # crops the image to make it circular
 
-education:
-  image: zju3.png
+experience:
+  zju: zju3.png
+  shlab:
+    light: shlab_light.png
+    dark: shlab_dark.png
 
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
@@ -18,8 +21,8 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I'm a first year PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology, advised by Prof. [Chunhua Shen](https://cshen.github.io/).
+I'm a 1st year PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology, advised by Prof. [Chunhua Shen](https://cshen.github.io/).
 
-I'm still exploring my interest in research, including *generative modeling* (now familiar with *diffusion models*), *computer vision* and *AI for science*. If any collision of ideas is expected, please email me at <a href="mailto:zhoujianjun@zju.edu.cn">zhoujianjun@zju.edu.cn<a/>.
+I'm still exploring my interest in research, including *3d vision*, *generative modeling*, and *world model*. If any collision of ideas is expected, please email me at <a href="mailto:zhoujianjun@zju.edu.cn">zhoujianjun@zju.edu.cn<a/>.
 
-When I have any publication, my photo will be updated. 😄
+To recover 4D world, up to now we still need a few good snapshots of it; however, I have taken no good snapshot of myself yet, so this dog may serve as a better placeholder than my real photo?😄
