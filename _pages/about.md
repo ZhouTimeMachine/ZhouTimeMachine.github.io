@@ -21,7 +21,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I'm a 1st year PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology, advised by Prof. [Chunhua Shen](https://cshen.github.io/).
+I'm a first year PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology, advised by Prof. [Chunhua Shen](https://cshen.github.io/).
 
 I'm still exploring my interest in research, including *3d vision*, *generative modeling*, and *world model*. If any collision of ideas is expected, please email me at <a href="mailto:zhoujianjun@zju.edu.cn">zhoujianjun@zju.edu.cn<a/>.
 

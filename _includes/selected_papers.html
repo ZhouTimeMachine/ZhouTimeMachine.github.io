@@ -1,4 +1,98 @@
 
-          <div class="publications">
-            {% bibliography -f {{ site.scholar.bibliography }} --group_by none --query @*[selected=true]* %}
+          <div class="news">
+            <div class="table-responsive" {% if include.limit and site.announcements.scrollable and news_size > 3 %}style="max-height: 60vw"{% endif %}>
+                <table class="table table-sm table-borderless">
+                    <tr>
+                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                          {%- if page.experience.zju %}
+                            {%- assign experience_image_path = page.experience.zju | prepend: 'assets/img/' -%}
+                            
+                            {% if page.experience.image_circular %}
+                              {%- assign experience_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                            {% else %}
+                              {%- assign experience_image_class = "img-fluid z-depth-1 rounded" -%}
+                            {% endif %}
+              
+                            {% include figure.html
+                            path=experience_image_path
+                            class=experience_image_class
+                            alt=experience.profile.image
+                            scale=50
+                            cache_bust=true -%}
+                          {% endif -%}
+                        </div>
+                        <div class="clearfix">
+                          <b> <a href="https://www.zju.edu.cn/english/">Zhejiang University</a> </b>
+                          <br> <a href="http://www.en.cs.zju.edu.cn/">College of Computer Science and Technology</a>
+                          <br> 2024.9 - present, Hangzhou, China <br>
+                          <br> <b>PhD Student majoring in Computer Science and Technology</b>
+                          <br> Advisor: Prof. <a href="https://cshen.github.io/">Chunhua Shen</a>
+                        </div>
+                    </tr>
+                    <tr>
+                      <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                        {%- if page.experience.shlab %}
+                          {%- assign experience_image_light_path = page.experience.shlab.light | prepend: 'assets/img/' -%}
+                          {%- assign experience_image_dark_path = page.experience.shlab.dark | prepend: 'assets/img/' -%}
+                          
+                          {% if page.experience.image_circular %}
+                            {%- assign experience_image_light_class = "repo-img-light  w-100 img-fluid z-depth-1 rounded-circle" -%}
+                            {%- assign experience_image_dark_class = "repo-img-dark  w-100 img-fluid z-depth-1 rounded-circle" -%}
+                          {% else %}
+                            {%- assign experience_image_light_class = "repo-img-light w-100 img-fluid z-depth-1 rounded" -%}
+                            {%- assign experience_image_dark_class = "repo-img-dark  w-100 img-fluid z-depth-1 rounded" -%}
+                          {% endif %}
+            
+                          {% include figure.html
+                            path=experience_image_light_path
+                            class=experience_image_light_class
+                            alt=experience.profile.image
+                            scale=50
+                            cache_bust=true -%}
+                          {% include figure.html
+                          path=experience_image_dark_path
+                          class=experience_image_dark_class
+                          alt=experience.profile.image
+                          scale=50
+                          cache_bust=true -%}
+                        {% endif -%}
+                      </div>
+                      <div class="clearfix">
+                        <b> <a href="https://www.zju.edu.cn/english/">Shanghai Artificial Intelligence Laboratory</a> </b>
+                        <br> 2024.8 - present, Shanghai, China <br>
+                        <br> <b>Research Intern, working on 3D Vision, World Model</b>
+                        <br> Advisor: Prof. <a href="https://tonghe90.github.io/">Tong He</a>
+                      </div>
+                    </tr>
+                    <tr>
+                      <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                        {%- if page.experience.zju %}
+                          {%- assign experience_image_path = page.experience.zju | prepend: 'assets/img/' -%}
+            
+                          {% if page.experience.image_circular %}
+                            {%- assign experience_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                          {% else %}
+                            {%- assign experience_image_class = "img-fluid z-depth-1 rounded" -%}
+                          {% endif %}
+            
+                          {% include figure.html
+                          path=experience_image_path
+                          class=experience_image_class
+                          alt=experience.profile.image
+                          scale=50
+                          cache_bust=true -%}
+                        {% endif -%}
+                      </div>
+                      <div class="clearfix">
+                        <b> <a href="https://www.zju.edu.cn/english/">Zhejiang University</a> </b>
+                        <br> <a href="http://www.en.cs.zju.edu.cn/turing_honors_class/list.htm">Turing Class</a>, <a href="http://ckc.zju.edu.cn/ckcen/_t1906/wbout/list.psp">Chu Kochen Honors College</a>
+                        <br> 2020.9 - 2024.6, Hangzhou, China <br>
+                        <br> <b>B.Eng. in Computer Science and Technology</b>
+                        <br> GPA: 4.83/5.0(4.0/4.0), 93.98/100 
+                        <br> Rank: 1/82
+                        <br> Advisor: Prof. <a href="https://cshen.github.io/">Chunhua Shen</a>
+                      </div>
+                  </tr>
+                </table>
+            </div>
           </div>

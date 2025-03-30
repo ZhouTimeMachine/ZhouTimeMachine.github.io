@@ -39,7 +39,7 @@ layout: default
           </div>
 
           <!-- News -->
-          <h2 style="color: inherit;">News</h2>
+          <h2 id="news" style="color: inherit;">News</h2>
           {%- include news.html limit=true %}
 
           <!-- Latest posts -->
@@ -50,14 +50,14 @@ layout: default
 
           <!-- Selected papers -->
           {% if page.selected_papers -%}
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+            <h2 id="publications" style="color: inherit;">Publications</h2>
             {%- include selected_papers.html %}
           {%- endif %}
 
-          <h2 style="color: inherit;">Experience</h2>
+          <h2 id="experience" style="color: inherit;">Experience</h2>
           {%- include experience.html %}
 
-          <h2 style="color: inherit;">Teaching Assistant</h2>
+          <h2 id="ta_list" style="color: inherit;">Teaching Assistant</h2>
           {%- include teaching.html %}
         </article>
 
