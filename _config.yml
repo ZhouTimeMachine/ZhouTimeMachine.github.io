@@ -189,6 +189,8 @@ imagemagick:
     - ".tiff"
   output_formats:
     webp: "-resize 800x"
+  
+lazy_loading_images: true
 
 # -----------------------------------------------------------------------------
 # Jekyll Diagrams
