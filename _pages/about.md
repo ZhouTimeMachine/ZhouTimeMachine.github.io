@@ -19,6 +19,7 @@ news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers:
   aether: aether-teaser-240p.mp4
+  deepverse: deepverse.png
 social: true  # includes social icons at the bottom of the page
 ---
 

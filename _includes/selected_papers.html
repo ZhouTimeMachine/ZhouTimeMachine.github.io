@@ -27,8 +27,33 @@
                         <div class="clearfix">
                           <b> <a href="https://arxiv.org/abs/2503.18945">Aether: Geometric-Aware Unified World Modeling</a> </b>
                           <br> Haoyi Zhu*, Yifan Wang*, <b>Jianjun Zhou*</b>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Junyi Chen*, Chunhua Shen*, Jiangmiao Pang*, Tong He*
-                          <br> <em>Arxiv preprint, 2025</em>
+                          <br> <em>ICCV 2025</em>
                           <br> <b>Lead</b> Aether Data Team to annotate 4D synthetic data; <b>co-lead</b> the establishment and improvement of the <b>robust</b> & fully <b>automatic</b> 4D synthetic data annotation pipeline with Yifan Wang.
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                          {%- assign publications_image_path = page.selected_papers.deepverse | prepend: 'assets/img/' -%}
+                          
+                          {% if page.experience.image_circular %}
+                            {%- assign publications_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                          {% else %}
+                            {%- assign publications_image_class = "img-fluid z-depth-1 rounded" -%}
+                          {% endif %}
+            
+                          {% include figure.html
+                          path=publications_image_path
+                          class=publications_image_class
+                          alt=publications.deepverse.teaser
+                          scale=50
+                          playsinline=true
+                          preload="auto"
+                          cache_bust=true -%}
+                        </div>
+                        <div class="clearfix">
+                          <b> <a href="https://arxiv.org/abs/2506.01103">DeepVerse: 4D Autoregressive Video Generation as a World Model</a> </b>
+                          <br> Junyi Chen, Haoyi Zhu, Xianglong He, Yifan Wang*, <b>Jianjun Zhou*</b>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Zhoujie Fu, Jiangmiao Pang, Tong He
+                          <br> <em>Arxiv preprint 2025</em>
                         </div>
                     </tr>
                 </table>
