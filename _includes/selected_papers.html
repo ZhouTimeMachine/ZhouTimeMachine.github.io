@@ -4,6 +4,42 @@
                 <table class="table table-sm table-borderless">
                     <tr>
                         <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                          {%- assign publications_video_path = page.selected_papers.pi3 | prepend: 'assets/video/' -%}
+                          
+                          {% if page.experience.image_circular %}
+                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
+                          {% else %}
+                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
+                          {% endif %}
+            
+                          {% include video.html
+                          path=publications_video_path
+                          class=publications_video_class
+                          alt=publications.pi3.teaser
+                          scale=50
+                          autoplay=true
+                          loop=true
+                          muted=true
+                          playsinline=true
+                          preload="auto"
+                          cache_bust=true -%}
+                        </div>
+                        <div class="clearfix">
+                          <strong> <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><msup><mi>π</mi><mn>3</mn></msup></math>: Scalable Permutation-Equivariant Visual Geometry Learning </strong>
+                          <br> Yifan Wang*, <strong>Jianjun Zhou*</strong>, Haoyi Zhu, Wenzheng Chang, Yang Zhou, Zizun Li, Junyi Chen, Jiangmiao Pang, Chunhua Shen, Tong He<sup>†</sup>
+                          <br> <a href="https://arxiv.org/abs/2507.13347">
+                            <img src="https://img.shields.io/badge/arXiv-2507.13347-b31b1b.svg" alt="Arxiv">
+                          </a> <a href="https://github.com/yyfz/Pi3">
+                            <img src="https://img.shields.io/github/stars/yyfz/Pi3" alt="GitHub Stars">
+                          </a> <a href="https://yyfz.github.io/pi3/">
+                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
+                          </a> <a href="https://huggingface.co/spaces/yyfz233/Pi3">
+                            <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow" alt="HuggingFace Demo">
+                          </a>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
                           {%- assign publications_video_path = page.selected_papers.aether | prepend: 'assets/video/' -%}
                           
                           {% if page.experience.image_circular %}
@@ -25,36 +61,56 @@
                           cache_bust=true -%}
                         </div>
                         <div class="clearfix">
-                          <b> <a href="https://arxiv.org/abs/2503.18945">Aether: Geometric-Aware Unified World Modeling</a> </b>
-                          <br> Haoyi Zhu*, Yifan Wang*, <b>Jianjun Zhou*</b>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Junyi Chen*, Chunhua Shen*, Jiangmiao Pang*, Tong He*
-                          <br> <em>ICCV 2025</em>
-                          <br> <b>Lead</b> Aether Data Team to annotate 4D synthetic data; <b>co-lead</b> the establishment and improvement of the <b>robust</b> & fully <b>automatic</b> 4D synthetic data annotation pipeline with Yifan Wang.
+                          <strong> Aether: Geometric-Aware Unified World Modeling </strong>
+                          <br> Haoyi Zhu*, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Junyi Chen*, Chunhua Shen*, Jiangmiao Pang*, Tong He*
+                          <br> <strong><em>ICCV 2025</em></strong>
+                          <br> <a href="https://arxiv.org/abs/2503.18945">
+                            <img src="https://img.shields.io/badge/arXiv-2503.18945-b31b1b.svg" alt="Arxiv">
+                          </a> <a href="https://github.com/OpenRobotLab/Aether">
+                            <img src="https://img.shields.io/github/stars/OpenRobotLab/Aether" alt="GitHub Stars">
+                          </a> <a href="https://aether-world.github.io/">
+                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
+                          </a> <a href="https://huggingface.co/spaces/AmberHeart/AetherV1">
+                            <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow" alt="HuggingFace Demo">
+                          </a>
                         </div>
                     </tr>
                     <tr>
                         <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-                          {%- assign publications_image_path = page.selected_papers.deepverse | prepend: 'assets/img/' -%}
+                          {%- assign publications_video_path = page.selected_papers.deepverse | prepend: 'assets/video/' -%}
                           
                           {% if page.experience.image_circular %}
-                            {%- assign publications_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
                           {% else %}
-                            {%- assign publications_image_class = "img-fluid z-depth-1 rounded" -%}
+                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
                           {% endif %}
             
-                          {% include figure.html
-                          path=publications_image_path
-                          class=publications_image_class
+                          {% include video.html
+                          path=publications_video_path
+                          class=publications_video_class
                           alt=publications.deepverse.teaser
                           scale=50
+                          autoplay=true
+                          loop=true
+                          muted=true
                           playsinline=true
                           preload="auto"
                           cache_bust=true -%}
                         </div>
                         <div class="clearfix">
-                          <b> <a href="https://arxiv.org/abs/2506.01103">DeepVerse: 4D Autoregressive Video Generation as a World Model</a> </b>
-                          <br> Junyi Chen, Haoyi Zhu, Xianglong He, Yifan Wang*, <b>Jianjun Zhou*</b>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Zhoujie Fu, Jiangmiao Pang, Tong He
-                          <br> <em>Arxiv preprint 2025</em>
+                          <strong> DeepVerse: 4D Autoregressive Video Generation as a World Model </strong>
+                          <br> Junyi Chen, Haoyi Zhu, Xianglong He, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Zhoujie Fu, Jiangmiao Pang, Tong He<sup>†</sup>
+                          <br> <a href="https://arxiv.org/abs/2506.01103">
+                            <img src="https://img.shields.io/badge/arXiv-2506.01103-b31b1b.svg" alt="Arxiv">
+                          </a> <a href="https://github.com/SOTAMak1r/DeepVerse">
+                            <img src="https://img.shields.io/github/stars/SOTAMak1r/DeepVerse" alt="GitHub Stars">
+                          </a> <a href="https://sotamak1r.github.io/deepverse/">
+                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
+                          </a>
                         </div>
+                    </tr>
+                    <tr>
+                      * Equal Contribution, <sup>†</sup> Corresponding Author
                     </tr>
                 </table>
             </div>
