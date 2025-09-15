@@ -21,6 +21,7 @@ selected_papers:
   aether: aether-teaser-240p.mp4
   deepverse: deepverse-teaser-240p.mp4
   pi3: pi3-teaser-240p.mp4
+  wint3r: wint3r-teaser-240p.mp4
 social: true  # includes social icons at the bottom of the page
 ---
 

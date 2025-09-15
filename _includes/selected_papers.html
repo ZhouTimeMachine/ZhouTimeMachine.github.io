@@ -110,6 +110,40 @@
                         </div>
                     </tr>
                     <tr>
+                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                          {%- assign publications_video_path = page.selected_papers.wint3r | prepend: 'assets/video/' -%}
+                          
+                          {% if page.experience.image_circular %}
+                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
+                          {% else %}
+                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
+                          {% endif %}
+            
+                          {% include video.html
+                          path=publications_video_path
+                          class=publications_video_class
+                          alt=publications.deepverse.teaser
+                          scale=50
+                          autoplay=true
+                          loop=true
+                          muted=true
+                          playsinline=true
+                          preload="auto"
+                          cache_bust=true -%}
+                        </div>
+                        <div class="clearfix">
+                          <strong> WinT3R: Window-Based Streaming Reconstruction with Camera Token Pool </strong>
+                          <br> Zizun Li, <strong>Jianjun Zhou</strong>, Yifan Wang, Haoyu Guo, Wenzheng Chang, Yang Zhou, Haoyi Zhu, Junyi Chen, Chunhua Shen, Tong He<sup>†</sup>
+                          <br> <a href="https://arxiv.org/abs/2509.05296">
+                            <img src="https://img.shields.io/badge/arXiv-2509.05296-b31b1b.svg" alt="Arxiv">
+                          </a> <a href="https://github.com/LiZizun/WinT3R">
+                            <img src="https://img.shields.io/github/stars/LiZizun/WinT3R" alt="GitHub Stars">
+                          </a> <a href="https://lizizun.github.io/WinT3R.github.io/">
+                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
+                          </a>
+                        </div>
+                    </tr>
+                    <tr>
                       * Equal Contribution, <sup>†</sup> Corresponding Author
                     </tr>
                 </table>
