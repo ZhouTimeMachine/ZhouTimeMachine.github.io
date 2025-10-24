@@ -2,149 +2,87 @@
           <div class="news">
             <div class="table-responsive" {% if include.limit and site.announcements.scrollable and news_size > 3 %}style="max-height: 60vw"{% endif %}>
                 <table class="table table-sm table-borderless">
+                    {% if page.experience.image_circular %}
+                        {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
+                        {%- assign publications_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                    {% else %}
+                        {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
+                        {%- assign publications_image_class = "img-fluid z-depth-1 rounded" -%}
+                    {% endif %}
+                    {% for paper in page.selected_papers -%}
+                        <tr>
+                            <!-- 2503 -->
+                            {% if paper == "aether" %}
+                                {% include paper.html
+                                  video_path='assets/video/aether-teaser-240p-2x.mp4'
+                                  video_class=publications_video_class
+                                  paper_name='Aether: Geometric-Aware Unified World Modeling'
+                                  author_list='Haoyi Zhu*, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Junyi Chen*, Chunhua Shen*, Jiangmiao Pang*, Tong He*'
+                                  accept='<em><strong>ICCV 2025 poster</strong></em>'
+                                  accept2='<em>ICCV 2025 RIWM workshop outstanding paper</em>'
+                                  arxiv_id='2503.18945'
+                                  github_repo='OpenRobotLab/Aether'
+                                  project_page='https://aether-world.github.io/'
+                                  hf_demo='AmberHeart/AetherV1'
+                                  -%}
+                            {% endif %}
+
+                            <!-- 2506 -->
+                            {% if paper == "deepverse" %}
+                                {% include paper.html
+                                  video_path='assets/video/deepverse-teaser-240p.mp4'
+                                  video_class=publications_video_class
+                                  paper_name='DeepVerse: 4D Autoregressive Video Generation as a World Model'
+                                  author_list='Junyi Chen, Haoyi Zhu, Xianglong He, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Zhoujie Fu, Jiangmiao Pang, Tong He<sup>†</sup>'
+                                  arxiv_id='2506.01103'
+                                  github_repo='SOTAMak1r/DeepVerse'
+                                  project_page='https://sotamak1r.github.io/deepverse/'
+                                  -%}
+                            {% endif %}
+
+                            <!-- 2507 -->
+                            {% if paper == "pi3" %}
+                                {% include paper.html
+                                  video_path='assets/video/pi3-teaser-240p.mp4'
+                                  video_class=publications_video_class
+                                  paper_name='<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><msup><mi>π</mi><mn>3</mn></msup></math>: Scalable Permutation-Equivariant Visual Geometry Learning'
+                                  author_list='Yifan Wang*, <strong>Jianjun Zhou*</strong>, Haoyi Zhu, Wenzheng Chang, Yang Zhou, Zizun Li, Junyi Chen, Jiangmiao Pang, Chunhua Shen, Tong He<sup>†</sup>'
+                                  arxiv_id='2507.13347'
+                                  github_repo='yyfz/Pi3'
+                                  project_page='https://yyfz.github.io/pi3/'
+                                  hf_demo='yyfz233/Pi3'
+                                  -%}
+                            {% endif %}
+
+                            <!-- 2509 -->
+                            {% if paper == "wint3r" %}
+                                {% include paper.html
+                                  video_path='assets/video/wint3r-teaser-240p.mp4'
+                                  video_class=publications_video_class
+                                  paper_name='WinT3R: Window-Based Streaming Reconstruction with Camera Token Pool'
+                                  author_list='Zizun Li, <strong>Jianjun Zhou</strong>, Yifan Wang, Haoyu Guo, Wenzheng Chang, Yang Zhou, Haoyi Zhu, Junyi Chen, Chunhua Shen, Tong He<sup>†</sup>'
+                                  arxiv_id='2509.05296'
+                                  github_repo='LiZizun/WinT3R'
+                                  project_page='https://lizizun.github.io/WinT3R.github.io/'
+                                  -%}
+                            {% endif %}
+
+                            {% if paper == "omniworld" %}
+                                {% include paper.html
+                                  video_path='assets/video/omniworld-teaser-240p-3x-stacked-with-cover.mp4'
+                                  video_class=publications_video_class
+                                  paper_name='OmniWorld: A Multi-Domain and Multi-Modal Dataset for 4D World Modeling'
+                                  author_list='Yang Zhou, Yifan Wang, <strong>Jianjun Zhou</strong>, Wenzheng Chang, Haoyu Guo, Zizun Li, Kaijing Ma, Xinyue Li, Yating Wang, Haoyi Zhu, Mingyu Liu, Dingning Liu, Jiange Yang, Zhoujie Fu, Junyi Chen, Chunhua Shen, Jiangmiao Pang, Kaipeng Zhang, Tong He<sup>†</sup>'
+                                  arxiv_id='2509.12201'
+                                  github_repo='yangzhou24/OmniWorld'
+                                  project_page='https://yangzhou24.github.io/OmniWorld/'
+                                  hf_data='InternRobotics/OmniWorld'
+                                  -%}
+                            {% endif %}
+                        </tr>
+                    {% endfor -%}
                     <tr>
-                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-                          {%- assign publications_video_path = page.selected_papers.pi3 | prepend: 'assets/video/' -%}
-                          
-                          {% if page.experience.image_circular %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
-                          {% else %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
-                          {% endif %}
-            
-                          {% include video.html
-                          path=publications_video_path
-                          class=publications_video_class
-                          alt=publications.pi3.teaser
-                          scale=50
-                          autoplay=true
-                          loop=true
-                          muted=true
-                          playsinline=true
-                          preload="auto"
-                          cache_bust=true -%}
-                        </div>
-                        <div class="clearfix">
-                          <strong> <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><msup><mi>π</mi><mn>3</mn></msup></math>: Scalable Permutation-Equivariant Visual Geometry Learning </strong>
-                          <br> Yifan Wang*, <strong>Jianjun Zhou*</strong>, Haoyi Zhu, Wenzheng Chang, Yang Zhou, Zizun Li, Junyi Chen, Jiangmiao Pang, Chunhua Shen, Tong He<sup>†</sup>
-                          <br> <a href="https://arxiv.org/abs/2507.13347">
-                            <img src="https://img.shields.io/badge/arXiv-2507.13347-b31b1b.svg" alt="Arxiv">
-                          </a> <a href="https://github.com/yyfz/Pi3">
-                            <img src="https://img.shields.io/github/stars/yyfz/Pi3" alt="GitHub Stars">
-                          </a> <a href="https://yyfz.github.io/pi3/">
-                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
-                          </a> <a href="https://huggingface.co/spaces/yyfz233/Pi3">
-                            <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow" alt="HuggingFace Demo">
-                          </a>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-                          {%- assign publications_video_path = page.selected_papers.aether | prepend: 'assets/video/' -%}
-                          
-                          {% if page.experience.image_circular %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
-                          {% else %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
-                          {% endif %}
-            
-                          {% include video.html
-                          path=publications_video_path
-                          class=publications_video_class
-                          alt=publications.aether.teaser
-                          scale=50
-                          autoplay=true
-                          loop=true
-                          muted=true
-                          playsinline=true
-                          preload="auto"
-                          cache_bust=true -%}
-                        </div>
-                        <div class="clearfix">
-                          <strong> Aether: Geometric-Aware Unified World Modeling </strong>
-                          <br> Haoyi Zhu*, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Junyi Chen*, Chunhua Shen*, Jiangmiao Pang*, Tong He*
-                          <br> <strong><em>ICCV 2025</em></strong>
-                          <br> <a href="https://arxiv.org/abs/2503.18945">
-                            <img src="https://img.shields.io/badge/arXiv-2503.18945-b31b1b.svg" alt="Arxiv">
-                          </a> <a href="https://github.com/OpenRobotLab/Aether">
-                            <img src="https://img.shields.io/github/stars/OpenRobotLab/Aether" alt="GitHub Stars">
-                          </a> <a href="https://aether-world.github.io/">
-                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
-                          </a> <a href="https://huggingface.co/spaces/AmberHeart/AetherV1">
-                            <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow" alt="HuggingFace Demo">
-                          </a>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-                          {%- assign publications_video_path = page.selected_papers.deepverse | prepend: 'assets/video/' -%}
-                          
-                          {% if page.experience.image_circular %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
-                          {% else %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
-                          {% endif %}
-            
-                          {% include video.html
-                          path=publications_video_path
-                          class=publications_video_class
-                          alt=publications.deepverse.teaser
-                          scale=50
-                          autoplay=true
-                          loop=true
-                          muted=true
-                          playsinline=true
-                          preload="auto"
-                          cache_bust=true -%}
-                        </div>
-                        <div class="clearfix">
-                          <strong> DeepVerse: 4D Autoregressive Video Generation as a World Model </strong>
-                          <br> Junyi Chen, Haoyi Zhu, Xianglong He, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Zhoujie Fu, Jiangmiao Pang, Tong He<sup>†</sup>
-                          <br> <a href="https://arxiv.org/abs/2506.01103">
-                            <img src="https://img.shields.io/badge/arXiv-2506.01103-b31b1b.svg" alt="Arxiv">
-                          </a> <a href="https://github.com/SOTAMak1r/DeepVerse">
-                            <img src="https://img.shields.io/github/stars/SOTAMak1r/DeepVerse" alt="GitHub Stars">
-                          </a> <a href="https://sotamak1r.github.io/deepverse/">
-                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
-                          </a>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-                          {%- assign publications_video_path = page.selected_papers.wint3r | prepend: 'assets/video/' -%}
-                          
-                          {% if page.experience.image_circular %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded-circle" -%}
-                          {% else %}
-                            {%- assign publications_video_class = "img-fluid z-depth-1 rounded" -%}
-                          {% endif %}
-            
-                          {% include video.html
-                          path=publications_video_path
-                          class=publications_video_class
-                          alt=publications.deepverse.teaser
-                          scale=50
-                          autoplay=true
-                          loop=true
-                          muted=true
-                          playsinline=true
-                          preload="auto"
-                          cache_bust=true -%}
-                        </div>
-                        <div class="clearfix">
-                          <strong> WinT3R: Window-Based Streaming Reconstruction with Camera Token Pool </strong>
-                          <br> Zizun Li, <strong>Jianjun Zhou</strong>, Yifan Wang, Haoyu Guo, Wenzheng Chang, Yang Zhou, Haoyi Zhu, Junyi Chen, Chunhua Shen, Tong He<sup>†</sup>
-                          <br> <a href="https://arxiv.org/abs/2509.05296">
-                            <img src="https://img.shields.io/badge/arXiv-2509.05296-b31b1b.svg" alt="Arxiv">
-                          </a> <a href="https://github.com/LiZizun/WinT3R">
-                            <img src="https://img.shields.io/github/stars/LiZizun/WinT3R" alt="GitHub Stars">
-                          </a> <a href="https://lizizun.github.io/WinT3R.github.io/">
-                            <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page">
-                          </a>
-                        </div>
-                    </tr>
-                    <tr>
-                      * Equal Contribution, <sup>†</sup> Corresponding Author
+                        * Equal Contribution, <sup>†</sup> Corresponding Author
                     </tr>
                 </table>
             </div>

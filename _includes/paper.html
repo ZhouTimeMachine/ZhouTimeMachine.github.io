@@ -1,0 +1,45 @@
+<div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+    {% if include.video_path %}
+        {% include video.html
+            path=include.video_path
+            class=include.video_class
+            alt=include.paper_name
+            scale=50
+            autoplay=true
+            loop=true
+            muted=true
+            playsinline=true
+            preload="auto"
+            cache_bust=true -%}
+    {% else %}
+        {% include figure.html
+            path=include.image_path
+            class=include.image_class
+            alt=include.paper_name
+            scale=50
+            playsinline=true
+            preload="auto"
+            cache_bust=true -%}
+    {% endif %}
+</div>
+<div class="clearfix">
+    <strong> {{ include.paper_name }} </strong>
+    <br> {{ include.author_list }}
+    {% if include.accept %}
+        <br> {{ include.accept }}
+    {% endif %}
+    {% if include.accept2 %}
+        <br> {{ include.accept2 }}
+    {% endif %}
+    <br> 
+    {% if include.arxiv_id %}<a href="https://arxiv.org/abs/{{ include.arxiv_id }}">
+        <img src="https://img.shields.io/badge/arXiv-{{ include.arxiv_id }}-b31b1b.svg" alt="Arxiv"></a>{% endif %}
+    {% if include.github_repo %}<a href="https://github.com/{{ include.github_repo }}">
+        <img src="https://img.shields.io/github/stars/{{ include.github_repo }}" alt="GitHub Stars"></a>{% endif %}
+    {% if include.project_page %}<a href="{{ include.project_page }}">
+        <img src="https://img.shields.io/badge/project_page-0F80C0?logo=rocket&logoColor=white" alt="Project Page"></a>{% endif %}
+    {% if include.hf_demo %}<a href="https://huggingface.co/spaces/{{ include.hf_demo }}">
+        <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow" alt="HuggingFace Demo"></a>{% endif %}
+    {% if include.hf_data %}<a href="https://huggingface.co/datasets/{{ include.hf_data }}">
+        <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="HuggingFace Dataset"></a>{% endif %}
+</div>

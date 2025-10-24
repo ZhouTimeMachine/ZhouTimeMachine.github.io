@@ -18,10 +18,11 @@ experience:
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers:
-  aether: aether-teaser-240p.mp4
-  deepverse: deepverse-teaser-240p.mp4
-  pi3: pi3-teaser-240p.mp4
-  wint3r: wint3r-teaser-240p.mp4
+  - pi3
+  - aether
+  - omniworld
+  - wint3r
+  - deepverse
 social: true  # includes social icons at the bottom of the page
 ---
 
