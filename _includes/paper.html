@@ -1,9 +1,10 @@
 <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
     {% if include.video_path %}
+        {% assign video_alt = include.video_alt | default: include.paper_name %}
         {% include video.html
             path=include.video_path
             class=include.video_class
-            alt=include.paper_name
+            alt=video_alt
             scale=50
             autoplay=true
             loop=true
@@ -12,10 +13,11 @@
             preload="auto"
             cache_bust=true -%}
     {% else %}
+        {% assign image_alt = include.image_alt | default: include.paper_name %}
         {% include figure.html
             path=include.image_path
             class=include.image_class
-            alt=include.paper_name
+            alt=image_alt
             scale=50
             playsinline=true
             preload="auto"
