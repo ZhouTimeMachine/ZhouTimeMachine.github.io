@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: First year CS PhD Student@<a href="https://www.zju.edu.cn/english/">ZJU</a>, advised by Prof. <a href='https://cshen.github.io/'>Chunhua Shen</a>
+subtitle: 2nd year CS PhD Student@<a href="https://www.zju.edu.cn/english/">ZJU</a>, advised by Prof. <a href='https://cshen.github.io/'>Chunhua Shen</a>
 
 profile:
   align: left
@@ -26,7 +26,7 @@ selected_papers:
 social: true  # includes social icons at the bottom of the page
 ---
 
-I'm a first year PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology, advised by Prof. [Hao Chen](https://stan-haochen.github.io/), Prof. [Tong He](https://tonghe90.github.io/) and Prof. [Chunhua Shen](https://cshen.github.io/).
+I'm a 2nd year PhD student in [Zhejiang University](https://www.zju.edu.cn/english/), majoring in computer science and technology, advised by Prof. [Hao Chen](https://stan-haochen.github.io/), Prof. [Tong He](https://tonghe90.github.io/) and Prof. [Chunhua Shen](https://cshen.github.io/).
 
 I'm still exploring my interest in research, including *generative modeling*, *world model* and *3d vision*. If any collision of ideas is expected, please email me at [zhoujianjun@zju.edu.cn](mailto:zhoujianjun@zju.edu.cn).
 
