@@ -36,12 +36,9 @@ jobs:
     - name: Install and Build 🔧
       run: |
         sudo apt-get update && sudo apt-get install -y imagemagick
-        pip3 install --upgrade nbconvert
-        pip3 install --upgrade jupyter
-        npm install -g mermaid.cli
         npm install -g purgecss
         export JEKYLL_ENV=production
-        bundle exec jekyll build --lsi
+        bundle exec jekyll build
         purgecss -c purgecss.config.js
     - name: Deploy 🚀
       if: github.event_name != 'pull_request'
