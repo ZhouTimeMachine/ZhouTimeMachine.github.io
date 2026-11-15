@@ -1,0 +1,26 @@
+{
+ "cases": [
+  "0542630de1d734de",
+  "289bcb973ed702a1",
+  "4955f54f807ef5aa",
+  "195074aeac8bbd76",
+  "0362399a61c18ad5",
+  "2245fcd7f76c2ecd",
+  "06ca8f480c91e9eb",
+  "0954f5a326941fb1",
+  "08f82d3899d6b726",
+  "4a046d13e389b505",
+  "0ab14ffa7e541b0b"
+ ],
+ "rows": [
+  "gt",
+  "jvt",
+  "aether",
+  "dmax1"
+ ],
+ "baselines": [
+  "dfot",
+  "gf",
+  "live"
+ ]
+}

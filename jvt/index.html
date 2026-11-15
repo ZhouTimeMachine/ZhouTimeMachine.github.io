@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JVT: Just Video Transformer makes pixel-space video diffusion simple</title>
+<meta name="description" content="JVT is a simple DiT-style Transformer for pixel-space video diffusion, supporting class-conditioned and unconditional video generation and joint RGB-disparity generation.">
+<meta property="og:title" content="JVT: Just Video Transformer">
+<meta property="og:description" content="Pixel-space video diffusion with a simple Transformer. Explore generated videos, camera control, and interactive 3D geometry.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2563eb">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/" } }
+</script>
+<script type="module" src="site.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#method">Skip to content</a>
+<header id="hero">
+  <div class="container">
+    <h1>JVT<span class="sr-only">: Just Video Transformer makes pixel-space video diffusion simple</span></h1>
+    <div class="subtitle">Just Video Transformer makes<br class="desktop-break"> pixel-space video diffusion simple</div>
+    <p class="authors"><a href="https://zhoutimemachine.github.io" target="_blank" rel="noopener">Jianjun Zhou</a><sup>1,2,3*</sup><span class="author-gap"></span><a href="https://github.com/Yusux" target="_blank" rel="noopener">Hua Geng</a><sup>1*</sup><span class="author-gap"></span><a href="https://github.com/ghy0324" target="_blank" rel="noopener">Haoyu Guo</a><sup>3†</sup></p>
+    <div class="affil"><span><sup>1</sup> Zhejiang University</span><span><sup>2</sup> Shanghai Innovation Institute</span><span><sup>3</sup> Shanghai AI Laboratory</span></div>
+    <p class="equal">* Equal contribution &nbsp; † Corresponding author</p>
+    <div class="buttons">
+      <a class="btn primary" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.8423 0a1.0037 1.0037 0 0 0-.922.6078c-.1536.3687-.0438.6275.2938 1.1113l6.9185 8.3597-1.0223 1.1058a1.0393 1.0393 0 0 0 .003 1.4229l1.2292 1.3135-5.4391 6.4444c-.2803.299-.4538.823-.2971 1.1986a1.0253 1.0253 0 0 0 .9585.635.9133.9133 0 0 0 .6891-.3405l5.783-6.126 7.4902 8.0051a.8527.8527 0 0 0 .6835.2597.9575.9575 0 0 0 .8777-.6138c.1577-.377-.017-.7502-.306-1.1407l-7.0518-8.3418 1.0632-1.13a.9626.9626 0 0 0 .0089-1.3165L4.6336.4639s-.3733-.4535-.768-.463zm0 .272h.0166c.2179.0052.4874.2715.5644.3639l.005.006.0052.0055 10.169 10.9905a.6915.6915 0 0 1-.0072.945l-1.0666 1.133-1.4982-1.7724-8.5994-10.39c-.3286-.472-.352-.6183-.2592-.841a.7307.7307 0 0 1 .6704-.4401Zm14.341 1.5701a.877.877 0 0 0-.6554.2418l-5.6962 6.1584 1.6944 1.8319 5.3089-6.5138c.3251-.4335.479-.6603.3247-1.0292a1.1205 1.1205 0 0 0-.9763-.689zm-7.6557 12.2823 1.3186 1.4135-5.7864 6.1295a.6494.6494 0 0 1-.4959.26.7516.7516 0 0 1-.706-.4669c-.1119-.2682.0359-.6864.2442-.9083l.0051-.0055.0047-.0055z"/></svg>Arxiv</a>
+      <a class="btn code-link" href="https://github.com/ZhouTimeMachine/JVT" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.419-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 6.006 0c2.291-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.922.43.372.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12 12 0 0 0 12 .297z"/></svg>Code</a>
+      <a class="btn" href="#demo">Explore in 3D <span aria-hidden="true">↓</span></a>
+    </div>
+    <nav class="section-nav" aria-label="Page sections"><a href="#method">Method</a><a href="#abstract">Abstract</a><a href="#generation">Video</a><a href="#joint-generation">Geometry</a><a href="#camctrl">Camera</a><a href="#results">Benchmark</a><a href="#citation">Citation</a></nav>
+  </div>
+</header>
+<main>
+<section id="method">
+  <div class="container">
+    <h2>VAE-free DiT for video generation</h2>
+    <p class="lead">Following <a href="https://arxiv.org/abs/2511.13720" target="_blank" rel="noopener">JiT</a>, JVT predicts a clean video from noisy pixels under a rectified-flow objective. Large spatiotemporal patches make direct video modeling tractable.</p>
+    <figure class="paper-figure">
+      <a href="assets/figures/transformer-and-register.png" target="_blank" rel="noopener" aria-label="Open the JVT architecture figure at full resolution"><img src="assets/figures/transformer-and-register.png" width="2493" height="975" loading="lazy" alt="JVT architecture: noisy video is patch embedded, processed by Transformer blocks with register tokens introduced after the first L1 blocks, then projected back to clean video."></a>
+      <figcaption>Key findings: (1) patch embedding is a major bottleneck for generation quality and efficiency in the current architecture, (2) registers without guidance bring no significant benefit in pixel-space video diffusion, (3) standard AdaLN remains a effective design for conditioning.</figcaption>
+    </figure>
+  </div>
+</section>
+<section id="abstract" class="alt">
+  <div class="container reading">
+    <h2>Abstract</h2>
+    <p>Direct diffusion modeling of high-dimensional raw video data is challenging, and existing pixel-space methods often rely on specialized architectures. We introduce <strong>JVT</strong> (<strong>J</strong>ust <strong>V</strong>ideo <strong>T</strong>ransformer), a simple large-patch DiT-style Transformer for pixel-space video diffusion, without a pretrained autoencoder, auxiliary detailers, cascaded stages, or U-Net-style skip connections. We systematically examine video patch embeddings, register tokens, and adaptive layer normalization to identify design choices that balance generation quality and computational efficiency. The resulting JVT design achieves generation quality competitive with latent diffusion baselines in both class-conditioned and unconditional settings. The pixel-space formulation of JVT also naturally supports joint generation of pixel-aligned modalities. We demonstrate this capability through camera-conditioned RGB-disparity generation, which improves camera following relative to RGB-only baselines and yields explicit scene geometry without an additional reconstruction model at inference. These results highlight the potential of simple DiT-style Transformers for pixel-space video diffusion, and we hope our findings offer useful insights and practical guidance for future research.</p>
+  </div>
+</section>
+<section id="generation">
+  <div class="container wide">
+    <h2>Qualitative results on classical benchmarks</h2>
+    <p class="lead">16-frame video generation at 256×256 resolution.</p>
+    <div class="video-grid" id="benchmarkVideos" tabindex="0" role="region" aria-label="Benchmark videos, automatically scrolling carousel" aria-roledescription="carousel" aria-live="off"><figure class="video-card">
+      <figcaption><div><h3>UCF101</h3></div><span class="tag">Class-conditioned</span></figcaption>
+      <video controls loop muted playsinline preload="none" poster="assets/videos/ucf101_poster.jpg" aria-label="25 UCF101 generated video samples in a 5 by 5 grid">
+        <source data-src="assets/videos/ucf101_grid.mp4" type="video/mp4">
+        Your browser does not support embedded MP4 video.
+      </video>
+      <p class="video-error status" hidden>Video unavailable. Please reload the page to try again.</p>
+      <noscript><p>Enable JavaScript to play this video.</p></noscript>
+    </figure><figure class="video-card">
+      <figcaption><div><h3>FaceForensics</h3></div><span class="tag">Unconditional</span></figcaption>
+      <video controls loop muted playsinline preload="none" poster="assets/videos/ffs_poster.jpg" aria-label="25 FaceForensics generated video samples in a 5 by 5 grid">
+        <source data-src="assets/videos/ffs_grid.mp4" type="video/mp4">
+        Your browser does not support embedded MP4 video.
+      </video>
+      <p class="video-error status" hidden>Video unavailable. Please reload the page to try again.</p>
+      <noscript><p>Enable JavaScript to play this video.</p></noscript>
+    </figure><figure class="video-card">
+      <figcaption><div><h3>SkyTimelapse</h3></div><span class="tag">Unconditional</span></figcaption>
+      <video controls loop muted playsinline preload="none" poster="assets/videos/sky_poster.jpg" aria-label="25 SkyTimelapse generated video samples in a 5 by 5 grid">
+        <source data-src="assets/videos/sky_grid.mp4" type="video/mp4">
+        Your browser does not support embedded MP4 video.
+      </video>
+      <p class="video-error status" hidden>Video unavailable. Please reload the page to try again.</p>
+      <noscript><p>Enable JavaScript to play this video.</p></noscript>
+    </figure><figure class="video-card">
+      <figcaption><div><h3>Taichi-HD</h3></div><span class="tag">Unconditional</span></figcaption>
+      <video controls loop muted playsinline preload="none" poster="assets/videos/taichi_poster.jpg" aria-label="25 Taichi-HD generated video samples in a 5 by 5 grid">
+        <source data-src="assets/videos/taichi_grid.mp4" type="video/mp4">
+        Your browser does not support embedded MP4 video.
+      </video>
+      <p class="video-error status" hidden>Video unavailable. Please reload the page to try again.</p>
+      <noscript><p>Enable JavaScript to play this video.</p></noscript>
+    </figure></div>
+    <div class="video-carousel-controls" hidden>
+      <button type="button" id="videoCarouselToggle" aria-label="Pause automatic video scrolling" aria-controls="benchmarkVideos">Pause</button>
+    </div>
+  </div>
+</section>
+<section id="joint-generation">
+  <div class="container">
+    <h2>Pixel-aligned joint generation</h2>
+    <p class="lead">Joint generate RGB with its pixel-aligned modalities (e.g. depth, raymap, segmentation, scene flow) directly in pixel space, without information loss in VAE latent space.</p>
+    <figure class="paper-figure"><a href="assets/figures/joint-pcd.png" target="_blank" rel="noopener" aria-label="Open joint RGB-disparity generation figure at full resolution"><img src="assets/figures/joint-pcd.webp" width="3323" height="1598" loading="lazy" alt="RealEstate10K examples showing JVT-generated RGB frames, aligned disparity maps and colored point clouds reconstructed with camera parameters."></a><figcaption>Joint RGB-disparity generation on RealEstate10K. Point clouds come from the generated disparity and RGB, without an additional reconstruction model at inference.</figcaption></figure>
+  </div>
+</section>
+<section id="demo" class="alt">
+  <div class="container wide">
+    <h2>Joint generated geometry with videos</h2>
+    <div class="legend">
+      <span><i style="border-color:#94a3b8"></i>input cameras</span>
+      <span><i style="border-color:#f59e0b;height:0;border-width:2px 0 0"></i>camera path</span>
+      <span><i style="border-color:#dc2626"></i>current camera</span>
+    </div>
+    <p class="status" id="geometryStatus" role="status">Static preview · scroll here to load the interactive results.</p>
+    <div class="stage">
+      <button class="nav prev" id="geoPrev" disabled aria-label="previous scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="card">
+      <div class="grid" id="grid"><div></div><div class="colhead">RGB</div><div class="colhead">Depth</div><div class="colhead">Point cloud</div><div class="colhead ovcol">3D view</div><div class="rowhead">Ground truth</div><div class="cell" data-t="rgb" data-r="gt" role="img" aria-label="Ground truth: rgb" style="background-image:url(data/0542630de1d734de/rgb_gt.jpg)"></div><div class="cell" data-t="depth" data-r="gt" role="img" aria-label="Ground truth: depth" style="background-image:url(data/0542630de1d734de/depth_gt.jpg)"></div><div class="cell" data-t="pcv" data-r="gt" role="img" aria-label="Ground truth: pcv" style="background-image:url(data/0542630de1d734de/pcv_gt.jpg)"></div><div class="cell ov ovcol" data-t="ov" data-r="gt" role="img" aria-label="Ground truth: ov" style="background-image:url(data/0542630de1d734de/ov_gt.jpg)"></div><div class="gap"></div><div class="rowhead ours">JVT</div><div class="cell" data-t="rgb" data-r="jvt" role="img" aria-label="JVT: rgb" style="background-image:url(data/0542630de1d734de/rgb_jvt.jpg)"></div><div class="cell" data-t="depth" data-r="jvt" role="img" aria-label="JVT: depth" style="background-image:url(data/0542630de1d734de/depth_jvt.jpg)"></div><div class="cell" data-t="pcv" data-r="jvt" role="img" aria-label="JVT: pcv" style="background-image:url(data/0542630de1d734de/pcv_jvt.jpg)"></div><div class="cell ov ovcol" data-t="ov" data-r="jvt" role="img" aria-label="JVT: ov" style="background-image:url(data/0542630de1d734de/ov_jvt.jpg)"></div><div class="rowhead">Aether w/ depth</div><div class="cell" data-t="rgb" data-r="aether" role="img" aria-label="Aether w/ depth: rgb" style="background-image:url(data/0542630de1d734de/rgb_aether.jpg)"></div><div class="cell" data-t="depth" data-r="aether" role="img" aria-label="Aether w/ depth: depth" style="background-image:url(data/0542630de1d734de/depth_aether.jpg)"></div><div class="cell" data-t="pcv" data-r="aether" role="img" aria-label="Aether w/ depth: pcv" style="background-image:url(data/0542630de1d734de/pcv_aether.jpg)"></div><div class="cell ov ovcol" data-t="ov" data-r="aether" role="img" aria-label="Aether w/ depth: ov" style="background-image:url(data/0542630de1d734de/ov_aether.jpg)"></div><div class="rowhead">Aether w/o depth</div><div class="cell" data-t="rgb" data-r="dmax1" role="img" aria-label="Aether w/o depth: rgb" style="background-image:url(data/0542630de1d734de/rgb_dmax1.jpg)"></div><div class="cell" data-t="depth" data-r="dmax1" role="img" aria-label="Aether w/o depth: depth" style="background-image:url(data/0542630de1d734de/depth_dmax1.jpg)"></div><div class="cell" data-t="pcv" data-r="dmax1" role="img" aria-label="Aether w/o depth: pcv" style="background-image:url(data/0542630de1d734de/pcv_dmax1.jpg)"></div><div class="cell ov ovcol" data-t="ov" data-r="dmax1" role="img" aria-label="Aether w/o depth: ov" style="background-image:url(data/0542630de1d734de/ov_dmax1.jpg)"></div></div>
+      <div class="controls" id="geometryControls" hidden>
+        <button class="play" id="play" aria-label="play"></button>
+        <div class="timeline">
+          <input type="range" id="frame" aria-label="Generated frame" min="0" max="7" value="0" step="0.01">
+          <div class="ticks" id="ticks"></div>
+        </div>
+        <span class="meta" id="caseMeta"></span>
+      </div>
+    </div>
+      <button class="nav next" id="geoNext" disabled aria-label="next scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="dots" id="geoDots"></div>
+    <p class="hint" id="geometryHint">Select a point cloud or 3D view to explore it. Drag to orbit, scroll to zoom, right-drag to pan.</p>
+    <details class="protocol"><summary>Details</summary><p>All methods share the initial RGB frame and target camera trajectory from RealEstate10K. JVT and Aether w/ depth also receive the same Pi3X depth for the initial frame. Aether w/o depth receives none. Each method's depth for its 8 frames is unprojected with the target cameras into a single colored point cloud. Cross-frame inconsistency can appear as doubled or drifting geometry. “Ground truth” combines real RGB frames with Pi3X-estimated depth, rather than measured depth. Depth receives the same display filtering for every method: latent-patch deblocking and a guided filter.</p></details>
+  </div>
+</section>
+<section id="camctrl">
+  <div class="container wide">
+    <h2>Camera following</h2>
+    <p class="lead">Depth (disparity) helps improve <b>translation</b> of camera following</p>
+    <div class="legend cclegend">
+      <span><svg viewBox="0 0 26 16"><rect x="5" y="2" width="16" height="12" rx="2" fill="none" stroke="#f97316" stroke-width="2.5"/></svg>reference region, boxed at the same position in every method</span>
+    </div>
+    <div class="stage">
+      <button class="nav prev" id="ccPrev" disabled aria-label="previous scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="card"><div class="comparison-scroll" tabindex="0" role="region" aria-label="Camera following visual comparison, scroll horizontally on small screens"><div class="ccgrid" id="ccGrid"><div></div><div class="colhead">GT</div><div class="colhead">DFoT</div><div class="colhead">GF</div><div class="colhead">LIVE</div><div class="colhead ours">JVT</div><div class="colhead ours">JVT w/ disp.</div><div class="rowhead">Frame 0</div><div class="cccell" role="img" aria-label="GT, frame 0" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_gt.jpg);background-position:0.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"></svg></div><div class="cccell" role="img" aria-label="DFoT, frame 0" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_dfot.jpg);background-position:0.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"></svg></div><div class="cccell" role="img" aria-label="GF, frame 0" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_gf.jpg);background-position:0.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"></svg></div><div class="cccell" role="img" aria-label="LIVE, frame 0" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_live.jpg);background-position:0.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"></svg></div><div class="cccell" role="img" aria-label="JVT, frame 0" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_jvt.jpg);background-position:0.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"></svg></div><div class="cccell" role="img" aria-label="JVT w/ disp., frame 0" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_jvt_disp.jpg);background-position:0.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"></svg></div><div></div><div class="sep"></div><div class="rowhead">Frame 4</div><div class="cccell" role="img" aria-label="GT, frame 4" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_gt.jpg);background-position:57.14285714285714% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="DFoT, frame 4" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_dfot.jpg);background-position:57.14285714285714% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="GF, frame 4" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_gf.jpg);background-position:57.14285714285714% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="LIVE, frame 4" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_live.jpg);background-position:57.14285714285714% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="JVT, frame 4" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_jvt.jpg);background-position:57.14285714285714% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="JVT w/ disp., frame 4" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_jvt_disp.jpg);background-position:57.14285714285714% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="23" y="2" width="38" height="205" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="175" y="95" width="42" height="50" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="rowhead">Frame 7</div><div class="cccell" role="img" aria-label="GT, frame 7" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_gt.jpg);background-position:100.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="DFoT, frame 7" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_dfot.jpg);background-position:100.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="GF, frame 7" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_gf.jpg);background-position:100.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="LIVE, frame 7" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_live.jpg);background-position:100.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="JVT, frame 7" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_jvt.jpg);background-position:100.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div><div class="cccell" role="img" aria-label="JVT w/ disp., frame 7" style="background-image:url(data/camctrl/0aa8646901d156e4/rgb_jvt_disp.jpg);background-position:100.0% 0"><svg viewBox="0 0 256 256" aria-hidden="true"><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="12" y="3" width="43" height="193" rx="4" fill="none" stroke="#f97316" stroke-width="3"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#fff" stroke-width="6"/><rect x="167" y="99" width="39" height="44" rx="4" fill="none" stroke="#f97316" stroke-width="3"/></svg></div></div></div></div>
+      <button class="nav next" id="ccNext" disabled aria-label="next scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="dots" id="ccDots"></div>
+    <p class="status" id="cameraStatus" role="status">Loading camera comparisons…</p>
+    <noscript><p class="hint">Enable JavaScript to browse the annotated camera comparisons.</p></noscript>
+    <div class="camera-results">
+      <h3>Quantitative evaluation of camera following</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Camera following results, scroll horizontally on small screens">
+<table class="results-table"><caption>Camera-conditioned generation on RealEstate10K · 8 frames, 256 × 256</caption><thead>
+<tr><th rowspan="2" scope="col">Method</th><th rowspan="2" scope="col">Objective</th><th rowspan="2" scope="col">FVD ↓</th><th colspan="2" scope="colgroup">RRA ↑</th><th colspan="2" scope="colgroup">RTA ↑</th><th colspan="2" scope="colgroup">AUC ↑</th></tr>
+<tr><th scope="col">@5°</th><th scope="col">@30°</th><th scope="col">@5°</th><th scope="col">@30°</th><th scope="col">@5°</th><th scope="col">@30°</th></tr>
+</thead><tbody><tr><th scope="row">DFoT</th><td>RGB</td><td>35.3</td><td><strong>99.9</strong></td><td>100</td><td><u>77.7</u></td><td><u>97.4</u></td><td><u>58.3</u></td><td><u>87.2</u></td></tr>
+<tr><th scope="row">Geometry Forcing</th><td>RGB</td><td>46.8</td><td><u>99.8</u></td><td>100</td><td>73.6</td><td>96.4</td><td>52.1</td><td>84.7</td></tr>
+<tr><th scope="row">LIVE</th><td>RGB</td><td>42.5</td><td>99.1</td><td>100</td><td>49.8</td><td>92.6</td><td>28.4</td><td>73.3</td></tr>
+<tr class="ours"><th scope="row">JVT (Ours)</th><td>RGB</td><td><strong>27.0</strong></td><td><strong>99.9</strong></td><td>100</td><td>72.4</td><td>96.0</td><td>52.8</td><td>84.1</td></tr>
+<tr class="ours"><th scope="row">JVT (Ours)</th><td>RGB-disparity</td><td><u>27.5</u></td><td><strong>99.9</strong></td><td>100</td><td><strong>79.5</strong></td><td><strong>98.4</strong></td><td><strong>58.6</strong></td><td><strong>88.6</strong></td></tr>
+</tbody></table></div>
+      <p class="table-note">RRA and RTA report relative rotation and translation-direction accuracy at 5° and 30° thresholds. AUC summarizes their joint error distribution.
+        Camera poses are estimated with <a href="https://github.com/yyfz/Pi3" target="_blank" rel="noopener">Pi3X</a>. </p>
+    </div>
+  </div>
+</section>
+<section id="results" class="alt">
+  <div class="container wide">
+    <h2>Quantitative results on classical benchmarks</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Video generation benchmark results, scroll horizontally on small screens">
+<table class="results-table"><caption>Selected results from the paper's main benchmark table · FVD@2048 ↓</caption>
+<thead><tr><th rowspan="2" scope="col">Method</th><th rowspan="2" scope="col">Resolution</th><th scope="colgroup">Class-conditioned</th><th colspan="4" scope="colgroup">Unconditional</th></tr>
+<tr><th scope="col">UCF-101</th><th scope="col">UCF-101</th><th scope="col">FaceForensics</th><th scope="col">SkyTimelapse</th><th scope="col">Taichi-HD</th></tr></thead><tbody><tr><th scope="row">Latte</th><td>256²</td><td>477.97</td><td>—</td><td>34.00</td><td>59.82</td><td>159.60</td></tr>
+<tr class="ours"><th scope="row">JVT (Ours)</th><td>256²</td><td><u>136.5</u></td><td>413.5</td><td><u>32.86</u></td><td><strong>46.58</strong></td><td><strong>119.1</strong></td></tr>
+<tr class="ours"><th scope="row">JVT+RG (Ours)</th><td>256²</td><td><strong>129.2</strong></td><td><strong>215.9</strong></td><td><strong>31.80</strong></td><td><u>47.80</u></td><td>124.3</td></tr>
+</tbody></table></div>
+    <p class="table-note">JVT denotes the register-free model, JVT+RG uses register guidance. RG improves UCF-101 results substantially, while its effect on the other datasets varies.
+      Bold and underlined values indicate the best and second-best scores in the full table under the paper's ranking protocol.</p>
+    <details class="full-results"><summary>All benchmark results and evaluation protocols</summary>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Video generation benchmark results, scroll horizontally on small screens">
+<table class="results-table"><caption>Complete benchmark comparison · FVD@2048 ↓</caption>
+<thead><tr><th rowspan="2" scope="col">Method</th><th rowspan="2" scope="col">Resolution</th><th scope="colgroup">Class-conditioned</th><th colspan="4" scope="colgroup">Unconditional</th></tr>
+<tr><th scope="col">UCF-101</th><th scope="col">UCF-101</th><th scope="col">FaceForensics</th><th scope="col">SkyTimelapse</th><th scope="col">Taichi-HD</th></tr></thead><tbody><tr><th scope="row">MoCoGAN</th><td>256²</td><td>—</td><td><span class="reported">2886.9<sup>†</sup></span></td><td><span class="reported">124.7<sup>†</sup></span></td><td><span class="reported">206.6<sup>†</sup></span></td><td>—</td></tr>
+<tr><th scope="row">MoCoGAN-HD</th><td>256²</td><td>—</td><td><span class="reported">1729.6<sup>†</sup></span></td><td><span class="reported">111.8<sup>†</sup></span></td><td><span class="reported">164.1<sup>†</sup></span></td><td><span class="reported">144.7<sup>‡</sup></span></td></tr>
+<tr><th scope="row">VideoGPT</th><td>256²</td><td>—</td><td><span class="reported">2880.6<sup>†</sup></span></td><td><span class="reported">185.9<sup>†</sup></span></td><td><span class="reported">222.7<sup>†</sup></span></td><td>—</td></tr>
+<tr><th scope="row">StyleGAN-V</th><td>256²</td><td>—</td><td>1431.0</td><td>47.41</td><td>79.52</td><td>—</td></tr>
+<tr><th scope="row">MoStGAN-V</th><td>256²</td><td>—</td><td>1380.3</td><td>39.7</td><td>65.3</td><td>—</td></tr>
+<tr><th scope="row">CogVideo</th><td>160²</td><td>626</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">DIGAN</th><td>128²</td><td>465</td><td>577</td><td>—</td><td>114.6</td><td><span class="reported">128.1<sup>*</sup></span></td></tr>
+<tr><th scope="row">DIGAN</th><td>256²</td><td>—</td><td><span class="reported">1630.2<sup>†</sup></span></td><td><span class="reported">62.5<sup>†</sup></span></td><td><span class="reported">83.11<sup>†</sup></span></td><td>—</td></tr>
+<tr><th scope="row">LVDM</th><td>256²</td><td>—</td><td>372</td><td>—</td><td>95.2</td><td><span class="reported">99.0<sup>*</sup></span></td></tr>
+<tr><th scope="row">PVDM</th><td>256²</td><td>—</td><td>343.6</td><td>—</td><td>55.41</td><td>—</td></tr>
+<tr><th scope="row">VIDM</th><td>128²</td><td>—</td><td>—</td><td>—</td><td>—</td><td><u>121.9</u></td></tr>
+<tr><th scope="row">VIDM</th><td>256²</td><td>—</td><td>294.7</td><td>—</td><td>57.4</td><td>—</td></tr>
+<tr><th scope="row">GLOBER</th><td>128²</td><td>151.5</td><td>239.5</td><td>—</td><td>—</td><td>124.2</td></tr>
+<tr><th scope="row">GLOBER</th><td>256²</td><td>168.9</td><td>252.7</td><td>—</td><td>78.1</td><td>—</td></tr>
+<tr><th scope="row">OmniTokenizer</th><td>256²</td><td>191</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">VDT</th><td>64²</td><td>—</td><td><u>225.7</u></td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FVDM</th><td>256²</td><td>468.23</td><td>—</td><td>55.01</td><td>106.09</td><td>194.61</td></tr>
+<tr><th scope="row">Latte</th><td>256²</td><td>477.97</td><td>—</td><td>34.00</td><td>59.82</td><td>159.60</td></tr>
+<tr class="ours"><th scope="row">JVT (Ours)</th><td>256²</td><td><u>136.5</u></td><td>413.5</td><td><u>32.86</u></td><td><strong>46.58</strong></td><td><strong>119.1</strong></td></tr>
+<tr class="ours"><th scope="row">JVT+RG (Ours)</th><td>256²</td><td><strong>129.2</strong></td><td><strong>215.9</strong></td><td><strong>31.80</strong></td><td><u>47.80</u></td><td>124.3</td></tr>
+</tbody></table></div>
+      <p class="table-note">† Scores taken from StyleGAN-V, ‡ scores taken from DIGAN. Other baseline scores are sourced from their original papers.
+        Taichi-HD scores marked * use both training and test splits and are excluded from ranking. — denotes an unreported result. JVT uses both training and test splits of UCF-101, and only the training split of the other datasets, following Latte's setting.</p>
+    </details>
+  </div>
+</section>
+<section id="citation" class="alt">
+  <div class="container">
+    <h2>Citation</h2>
+    <div class="citation-block">
+      <div class="citation-toolbar"><button type="button" class="btn" id="copyCitation">Copy BibTeX</button></div>
+      <pre class="bib" tabindex="0"><code id="bibtex">@article{zhou2026jvt,
+  title   = {{JVT}: Just Video Transformer makes pixel-space video diffusion simple},
+  author  = {Jianjun Zhou and Hua Geng and Haoyu Guo},
+  year    = {2026}
+  journal = {arXiv preprint arXiv: XXXX.XXXXX}
+}</code></pre>
+    </div>
+    <p class="status" id="copyStatus" role="status"></p>
+  </div>
+</section>
+</main>
+<footer><div class="container"><a href="#hero" class="footer-brand">JVT</a><p>Just Video Transformer · Interactive point clouds powered by <a href="https://threejs.org/" target="_blank" rel="noopener">three.js</a></p></div></footer>
+<div id="viewer" aria-modal="true" role="dialog" aria-labelledby="vTitle" tabindex="-1">
+  <div class="vpanel">
+    <div class="vbar">
+      <span class="title" id="vTitle">3D viewer</span>
+      <div class="tabs" id="vTabs"></div>
+      <span class="sp"></span>
+      <label>Size <input type="range" id="vSize" min="0.3" max="3" step="0.1" value="1" style="width:90px"></label>
+      <label><input type="checkbox" id="vCams" checked> Cameras</label>
+      <button class="ghost" id="vFromCam" title="look through the current input camera">Camera <span id="vCamIdx">0</span> view</button>
+      <button class="ghost" id="vReset">Reset</button>
+      <button class="close" id="vClose" aria-label="close">×</button>
+    </div>
+    <div class="vstage" id="vStage"><div class="vloading" id="vLoading">Loading point clouds…</div></div>
+    <div class="vfoot"><span>Drag: orbit</span><span>Scroll: zoom</span><span>Right-drag / Shift-drag: pan</span>
+      <span>← / →: previous / next camera</span><span>Esc: close</span></div>
+  </div>
+</div>
+
+
+</body>
+</html>
