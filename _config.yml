@@ -121,6 +121,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - cover
 keep_files:
   - CNAME
   - .nojekyll
@@ -142,6 +143,10 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  - scope:
+      path: "jvt"
+    values:
+      sitemap: false
 
 sass:
   style: compressed
@@ -151,7 +156,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ['robots.txt']
+  exclude: ['robots.txt', 'jvt/*']
   uglifier_args:
     harmony: true
 
