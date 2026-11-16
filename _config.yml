@@ -144,7 +144,7 @@ defaults:
     values:
       sitemap: false
   - scope:
-      path: "jvt"
+      path: "JVT"
     values:
       sitemap: false
 
@@ -156,7 +156,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ['robots.txt', 'jvt/*']
+  exclude: ['robots.txt', 'JVT/*']
   uglifier_args:
     harmony: true
 

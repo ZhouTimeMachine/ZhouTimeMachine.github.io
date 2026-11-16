@@ -1,8 +1,8 @@
-# Publish the web export at /jvt/ while preserving its relative asset URLs.
+# Publish the web export at /JVT/ while preserving its relative asset URLs.
 module Jekyll
   class JvtPublicFile < StaticFile
     def url
-      super.sub(%r{\A/?jvt/project_page/}, "/jvt/")
+      super.sub(%r{\A/?JVT/project_page/}, "/JVT/")
     end
   end
 
@@ -12,7 +12,7 @@ module Jekyll
 
     def generate(site)
       site.static_files.map! do |file|
-        if file.relative_path.match?(%r{\A/?jvt/project_page/})
+        if file.relative_path.match?(%r{\A/?JVT/project_page/})
           JvtPublicFile.new(site, site.source, File.dirname(file.relative_path), file.name)
         else
           file
