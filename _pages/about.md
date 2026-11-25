@@ -19,6 +19,7 @@ news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers:
   - pi3
+  - jvt
   - aether
   - omniworld
   - wint3r

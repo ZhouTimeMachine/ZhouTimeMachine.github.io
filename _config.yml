@@ -157,8 +157,6 @@ sass:
 
 jekyll-minifier:
   exclude: ['robots.txt', 'JVT/*']
-  uglifier_args:
-    harmony: true
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images

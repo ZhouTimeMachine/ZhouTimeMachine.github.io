@@ -18,7 +18,7 @@
                                   video_class=publications_video_class
                                   paper_name='Aether: Geometric-Aware Unified World Modeling'
                                   author_list='Haoyi Zhu*, Yifan Wang*, <strong>Jianjun Zhou*</strong>, Wenzheng Chang*, Yang Zhou*, Zizun Li*, Junyi Chen*, Chunhua Shen*, Jiangmiao Pang*, Tong He*'
-                                  accept='<em><strong>ICCV 2025 poster</strong></em>'
+                                  accept='<em><strong>ICCV 2025</strong></em>'
                                   accept2='<em>ICCV 2025 RIWM workshop outstanding paper</em>'
                                   arxiv_id='2503.18945'
                                   github_repo='OpenRobotLab/Aether'
@@ -81,6 +81,20 @@
                                   github_repo='yangzhou24/OmniWorld'
                                   project_page='https://yangzhou24.github.io/OmniWorld/'
                                   hf_data='InternRobotics/OmniWorld'
+                                  -%}
+                            {% endif %}
+
+                            <!-- 2611 -->
+                            {% if paper == "jvt" %}
+                                {% include paper.html
+                                  video_path='assets/video/jvt-teaser-240p.mp4'
+                                  video_class=publications_video_class
+                                  video_alt='jvt teaser'
+                                  paper_name='JVT: Just Video Transformer makes pixel-space video diffusion simple'
+                                  author_list='<strong>Jianjun Zhou*</strong>, Hua Geng*, Haoyu Guo<sup>†</sup>'
+                                  arxiv_id='2611.18549'
+                                  github_repo='ZhouTimeMachine/JVT'
+                                  project_page='https://zhoutimemachine.github.io/JVT/'
                                   -%}
                             {% endif %}
                         </tr>
